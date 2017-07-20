@@ -18,38 +18,75 @@ import 'nprogress/nprogress.css'
 import 'assets/css/global.css'
 import 'assets/css/base.css'
 
+
 axios.defaults.baseURL = HOST
 axios.defaults.timeout = 1000 * 15
+axios.defaults.withCredentials = true
 axios.defaults.headers.authKey = Lockr.get('authKey')
 axios.defaults.headers.sessionId = Lockr.get('sessionId')
 axios.defaults.headers['Content-Type'] = 'application/json'
 
-axios.interceptors.request.use(function (config) {    // 这里的config包含每次请求的内容
-  if (store.state.authKey) {
-    config.headers.authKey = Lockr.get('authKey')
-  }
-  return config
-}, function (err) {
-  return Promise.reject(err)
-})
+axios.interceptors.request.use(
+    // 这里的config包含每次请求的内容
+    config => {
+        console.info('authKey :' + store.state.authKey);
+        if (store.state.authKey) {
+            config.headers.authKey = Lockr.get('authKey')
+        }
+        return config
+    }, error => {
+        return Promise.reject(err)
+    })
 
 const router = new VueRouter({
-  mode: 'history',
-  base: __dirname,
-  routes
+    mode: 'history',
+    base: __dirname,
+    routes
 })
 
 router.beforeEach((to, from, next) => {
-  console.log("to:" + to)
-  console.log("from:" + from)
-  const hideLeft = to.meta.hideLeft
-  store.dispatch('showLeftMenu', hideLeft)
-  store.dispatch('showLoading', true)
-  NProgress.start()
-  next()
+    const hideLeft = to.meta.hideLeft
+    store.dispatch('showLeftMenu', hideLeft)
+    store.dispatch('showLoading', true)
+    //NProgress.start()
+    //next()
+        console.log(store.state.authKey);
+    if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
+        if (store.state.authKey) {  // 通过vuex state获取当前的token是否存在
+            next();
+        } else {
+            console.log('to login--------');
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+            })
+        }
+    } else {
+        next();
+    }
 })
+// http response 拦截器
+axios.interceptors.response.use(
+    response => {
+        return response;
+    },
+    error => {
+        if (error.response) {
+            switch (error.response.status) {
+                case 401:
+                    // 返回 401 清除token信息并跳转到登录页面
+                    store.commit(types.LOGOUT);
+                    router.replace({
+                        path: 'login',
+                        query: {redirect: router.currentRoute.fullPath}
+                    });
+            }
+        }
+        return Promise.reject(error.response.data)   // 返回接口返回的错误信息
+    });
+
 router.afterEach(transition => {
-  NProgress.done()
+    NProgress.done()
 })
 
 Vue.use(ElementUI)
@@ -70,11 +107,11 @@ const bus = new Vue()
 window.bus = bus
 
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  filters: filter,
-  router,
-  store,
-  components: { App }
+    el: '#app',
+    template: '<App/>',
+    filters: filter,
+    router,
+    store,
+    components: {App}
 // render: h => h(Login)
 }).$mount('#app')
