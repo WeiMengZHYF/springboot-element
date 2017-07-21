@@ -107,15 +107,13 @@ const apiMethods = {
         },
         resetCommonData(data) {
             _(data.menusList).forEach((res, key) => {
-                console.log(key)
-                console.log(res)
                 if (key == 0) {
                     res.selected = true
                 } else {
                     res.selected = false
                 }
             })
-            console.log(data)
+            this.$store.state.authKey = data.authKey
             Lockr.set('menus', data.menusList)              // 菜单数据
             Lockr.set('authKey', data.authKey)              // 权限认证
             Lockr.set('rememberKey', data.rememberKey)      // 记住密码的加密字符串
