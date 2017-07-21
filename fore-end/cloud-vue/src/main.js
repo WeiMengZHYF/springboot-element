@@ -29,9 +29,10 @@ axios.defaults.headers['Content-Type'] = 'application/json'
 axios.interceptors.request.use(
     // 这里的config包含每次请求的内容
     config => {
-        console.info('authKey :' + store.state.authKey);
+        console.info('authKey :' +  Lockr.get('authKey'));
         if (store.state.authKey) {
             config.headers.authKey = Lockr.get('authKey')
+            config.headers.sessionId = Lockr.get('sessionId')
         }
         return config
     }, error => {
@@ -50,12 +51,13 @@ router.beforeEach((to, from, next) => {
     store.dispatch('showLoading', true)
     //NProgress.start()
     //next()
-        console.log(store.state.authKey);
+    console.log('authKey :' +  Lockr.get('authKey'));
+    let authKey = Lockr.get('authKey');
     if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
-        if (store.state.authKey) {  // 通过vuex state获取当前的token是否存在
+        if (authKey) {
             next();
         } else {
-            console.log('to login--------');
+            console.log('to login- current Path :'+to.fullPath);
             next({
                 path: '/login',
                 query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
@@ -72,12 +74,14 @@ axios.interceptors.response.use(
     },
     error => {
         if (error.response) {
+            console.log('请求失败 : '+error);
             switch (error.response.status) {
                 case 401:
-                    // 返回 401 清除token信息并跳转到登录页面
-                    store.commit(types.LOGOUT);
+                    Lockr.rm('authKey');
+                    Lockr.rm('sessionId');
+                    console.info(router.currentRoute.fullPath);
                     router.replace({
-                        path: 'login',
+                        path: '/login',
                         query: {redirect: router.currentRoute.fullPath}
                     });
             }
