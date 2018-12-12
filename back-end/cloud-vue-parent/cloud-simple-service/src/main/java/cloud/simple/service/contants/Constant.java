@@ -22,7 +22,7 @@ public class Constant {
     /**
      * 安全密匙
      */
-    public static String SECRET_KEY = "#rSgRKVunlLUMopFWbEevOy9";
+    public static final String SECRET_KEY = "#rSgRKVunlLUMopFWbEevOy9";
 
     /**
      * 菜单分类ICON
