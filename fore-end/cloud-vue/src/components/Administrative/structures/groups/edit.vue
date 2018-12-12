@@ -19,30 +19,7 @@
         </el-input>
       </el-form-item>
       <el-form-item label="权限分配">
-       <!-- <div class="bor-gray h-400 ovf-y-auto bor-ra-5 bg-wh">
-          <div v-for="item in nodes">
-            <div class="bor-b-ccc bg-gra p-l-10 p-r-10">
-              <el-checkbox v-model="item.check" @change="selectProjectRule(item)">{{item.title}}</el-checkbox>
-            </div>
-            <div v-for="childItem in item.child">
-              <div class="p-l-20 bor-b-ccc">
-                <el-checkbox v-model="childItem.check" @change="selectModuleRule(childItem, item, childItem.child)">{{childItem.title}}</el-checkbox>
-              </div>
-              <div class="p-l-40 bor-b-ccc bg-gra">
-                <el-checkbox v-for="grandChildItem in childItem.child" v-model="grandChildItem.check" @change="selectActionRule(grandChildItem, childItem, item)">{{grandChildItem.title}}</el-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>-->
-        <el-tree
-                :data="nodes"
-                show-checkbox
-                default-expand-all
-                node-key="id"
-                ref="tree"
-                highlight-current
-                :props="defaultProps">
-        </el-tree>
+        <el-tree :data="nodes" show-checkbox default-expand-all node-key="id" ref="tree" highlight-current :props="defaultProps"/>
 
       </el-form-item>
       <el-form-item>
@@ -84,13 +61,13 @@
     },
     methods: {
       edit(form) {
-        this.form.rules = this.$refs.tree.getCheckedKeys().toString()
+        this.form.rules = this.$refs.tree.getCheckedKeys().toString();
         this.$refs[form].validate((valid) => {
           if (valid) {
-            this.isLoading = !this.isLoading
+            this.isLoading = !this.isLoading;
             this.apiPost('admin/groups/update', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '编辑成功')
+              this.handelResponse(res, () => {
+                _g.toastMsg('success', '编辑成功');
                 setTimeout(() => {
                   this.goback()
                 }, 1500)
@@ -112,7 +89,6 @@
       },
       getGroups() {
         this.apiGet('admin/groups').then((res) => {
-          console.log('res = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
             _(data).forEach((ret) => {
               ret.id = ret.id.toString()
@@ -122,23 +98,23 @@
         })
       },
       async getGroupInfo() {
-        this.form.id = this.$route.params.id
-        let arr = await this.getRules()
-        this.nodes = this.nodes.concat(arr)
+        this.form.id = this.$route.params.id;
+        let arr = await this.getRules();
+        this.nodes = this.nodes.concat(arr);
         this.apiGet('admin/groups/edit/' + this.form.id).then((res) => {
           this.handelResponse(res, (data) => {
-            this.form.title = data.title
-            this.form.pid = data.pid ? data.pid.toString() : ''
-            this.form.remark = data.remark
-            this.form.status = data.status
-            let array = data.rules.split(',')
+            this.form.title = data.title;
+            this.form.pid = data.pid ? data.pid.toString() : '';
+            this.form.remark = data.remark;
+            this.form.status = data.status;
+            let array = data.rules.split(',');
             this.$refs.tree.setCheckedKeys(array)
           })
         })
       }
     },
     created() {
-      this.getGroupInfo()
+      this.getGroupInfo();
       this.getGroups()
     },
     mixins: [http, fomrMixin]

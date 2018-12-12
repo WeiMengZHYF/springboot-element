@@ -5,13 +5,7 @@
 				<el-input v-model.trim="form.name" class="h-40 w-200"></el-input>
 			</el-form-item>
 			<el-form-item label="备注">
-        <el-input
-          type="textarea"
-          class="w-200"
-          :autosize="{ minRows: 2, maxRows: 4}"
-          placeholder="请输入内容"
-          v-model="form.remark">
-        </el-input>
+        <el-input type="textarea" class="w-200" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="form.remark"></el-input>
       </el-form-item>
 			<el-form-item>
 				<el-button type="primary" @click="add('form')" :loading="isLoading">提交</el-button>
@@ -43,10 +37,10 @@
       add(form) {
         this.$refs[form].validate((valid) => {
           if (valid) {
-            this.isLoading = !this.isLoading
+            this.isLoading = !this.isLoading;
             this.apiPost('admin/posts/save/', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '添加成功')
+              this.handelResponse(res, () => {
+                _g.toastMsg('success', '添加成功');
                 setTimeout(() => {
                   this.goback()
                 }, 1500)

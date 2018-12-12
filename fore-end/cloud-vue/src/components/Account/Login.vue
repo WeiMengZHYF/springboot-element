@@ -25,118 +25,119 @@
 </template>
 
 <script>
-    import http from '../../assets/js/http'
+  import http from '../../assets/js/http'
 
-    export default {
-        data() {
-            return {
-                title: '',
-                systemName: '',
-                loading: false,
-                form: {
-                    username: '',
-                    password: '',
-                    verifyCode: ''
-                },
-                requireVerify: false,
-                verifyUrl: '',
-                verifyImg: window.HOST + 'admin/verify',
-                rules2: {
-                    username: [
-                        {required: true, message: '请输入账号', trigger: 'blur'}
-                    ],
-                    password: [
-                        {required: true, message: '请输入密码', trigger: 'blur'}
-                    ],
-                    verifyCode: [
-                        {required: false, message: '请输入验证码', trigger: 'blur'}
-                    ]
-                },
-                checked: false
+  export default {
+    data() {
+      return {
+        title: '',
+        systemName: '',
+        loading: false,
+        form: {
+          username: '',
+          password: '',
+          verifyCode: ''
+        },
+        requireVerify: false,
+        verifyUrl: '',
+        verifyImg: window.HOST + 'admin/verify',
+        rules2: {
+          username: [
+            { required: true, message: '请输入账号', trigger: 'blur' }
+          ],
+          password: [
+            { required: true, message: '请输入密码', trigger: 'blur' }
+          ],
+          verifyCode: [
+            { required: false, message: '请输入验证码', trigger: 'blur' }
+          ]
+        },
+        checked: false
+      }
+    },
+    methods: {
+      refreshVerify() {
+        this.verifyUrl = '';
+        setTimeout(() => {
+          this.verifyUrl = this.verifyImg + '?v=' + moment().unix()
+        }, 300)
+      },
+      handleSubmit2() {
+        if (this.loading){
+          return;
+        }
+        this.$refs.form.validate((valid) => {
+          if (valid) {
+            this.loading = !this.loading;
+            let data = {};
+            if (this.requireVerify) {
+              data.username = this.form.username;
+              data.password = this.form.password;
+              data.verifyCode = this.form.verifyCode
+            } else {
+              data.username = this.form.username;
+              data.password = this.form.password
             }
-        },
-        methods: {
-            refreshVerify() {
-                this.verifyUrl = ''
-                setTimeout(() => {
-                    this.verifyUrl = this.verifyImg + '?v=' + moment().unix()
-                }, 300)
-            },
-            handleSubmit2(form) {
-                if (this.loading) return
-                this.$refs.form.validate((valid) => {
-                    if (valid) {
-                        this.loading = !this.loading
-                        let data = {}
-                        if (this.requireVerify) {
-                            data.username = this.form.username
-                            data.password = this.form.password
-                            data.verifyCode = this.form.verifyCode
-                        } else {
-                            data.username = this.form.username
-                            data.password = this.form.password
-                        }
-                        if (this.checked) {
-                            data.isRemember = 1
-                        } else {
-                            data.isRemember = 0
-                        }
-                        this.apiPost('admin/login', data).then((res) => {
-                            if (res.code != 200) {
-                                this.loading = !this.loading
-                                this.handleError(res)
-                            } else {
-                                this.refreshVerify()
-                                if (this.checked) {
-                                    Cookies.set('rememberPwd', true, {expires: 1})
-                                }
-                                this.resetCommonData(res.data)
-                                _g.toastMsg('success', '登录成功')
-                                console.log('login successfully-------- ')
-                                this.$router.push({path: '/home/menu/list'});
-                            }
-                        })
-                    } else {
-                        return false
-                    }
-                })
-            },
-            checkIsRememberPwd() {
-                if (Cookies.get('rememberPwd')) {
-                    let data = {
-                        rememberKey: Lockr.get('rememberKey')
-                    }
-                    this.apiPost('admin/relogin', data).then((res) => {
-                        this.handelResponse(res, (data) => {
-                            this.resetCommonData(data)
-                        })
-                    })
-                }
+            if (this.checked) {
+              data.isRemember = 1
+            } else {
+              data.isRemember = 0
             }
-        },
-        created() {
-            this.checkIsRememberPwd()
-            this.apiPost('admin/configs').then((res) => {
-                this.handelResponse(res, (data) => {
-                    document.title = data.SYSTEM_NAME
-                    this.systemName = data.SYSTEM_NAME
-                    if (parseInt(data.IDENTIFYING_CODE)) {
-                        this.requireVerify = true
-                        this.rules2.verifyCode[0].required = true
-                    }
-                })
-            })
-            this.verifyUrl = this.verifyImg
-        },
-        mounted() {
-            window.addEventListener('keyup', (e) => {
-                if (e.keyCode === 13) {
-                    this.handleSubmit2('form')
+            this.apiPost('admin/login', data).then((res) => {
+              if (res.code !== 200) {
+                this.loading = !this.loading;
+                this.handleError(res)
+              } else {
+                this.refreshVerify();
+                if (this.checked) {
+                  Cookies.set('rememberPwd', true, { expires: 1 })
                 }
+                this.resetCommonData(res.data);
+                _g.toastMsg('success', '登录成功');
+                this.$router.push({ path: '/home/menu/list' });
+              }
             })
-        },
-        mixins: [http]
-    }
+          } else {
+            return false
+          }
+        })
+      },
+      checkIsRememberPwd() {
+        if (Cookies.get('rememberPwd')) {
+          let data = {
+            rememberKey: Lockr.get('rememberKey')
+          };
+          this.apiPost('admin/relogin', data).then((res) => {
+            this.handelResponse(res, (data) => {
+              this.resetCommonData(data)
+            })
+          })
+        }
+      }
+    },
+    created() {
+      this.checkIsRememberPwd();
+      this.apiPost('admin/configs').then((res) => {
+        this.handelResponse(res, (data) => {
+          document.title = data.SYSTEM_NAME;
+          this.systemName = data.SYSTEM_NAME;
+          if (parseInt(data.IDENTIFYING_CODE)) {
+            this.requireVerify = true;
+            this.rules2.verifyCode[0].required = true
+          }
+        })
+      });
+      this.verifyUrl = this.verifyImg
+    },
+    mounted() {
+      window.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+          this.handleSubmit2('form')
+        }
+      })
+    },
+    mixins: [http]
+  }
 </script>
 
 <style>

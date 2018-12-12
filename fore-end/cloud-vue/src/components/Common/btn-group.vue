@@ -23,38 +23,38 @@
         return 'admin/' + this.type
       },
       getSelectedIds() {
-        let array = []
+        let array = [];
         _(this.selectedData).forEach((res) => {
           array.push(res.id)
-        })
+        });
         return array
       },
       changeAttrInBtnGroup(cate) {
         if (!this.selectedData.length) {
-          _g.toastMsg('warning', '请勾选数据')
+          _g.toastMsg('warning', '请勾选数据');
           return
         }
-        let word = ''
-        if (cate == 1) {
-          word = '启用'
+        let word = '';
+        if (cate === 1) {
+          word = '启用';
           this.enableLoading = !this.enableLoading
         } else {
-          this.disableLoading = !this.disableLoading
+          this.disableLoading = !this.disableLoading;
           word = '禁用'
         }
-        let url = this.getUrl() + '/enables'
+        let url = this.getUrl() + '/enables';
         let data = {
           ids: this.getSelectedIds(),
           status: cate
-        }
+        };
         this.apiPost(url, data).then((res) => {
           this.handelResponse(res, (data) => {
-            _g.toastMsg('success', word + '成功')
+            _g.toastMsg('success', word + '成功');
             setTimeout(() => {
               _g.shallowRefresh(this.$route.name)
             }, 1500)
           }, () => {
-            if (cate == 1) {
+            if (cate === 1) {
               this.enableLoading = !this.enableLoading
             } else {
               this.disableLoading = !this.disableLoading
@@ -64,17 +64,17 @@
       },
       deleteDatasInBtnGroup() {
         if (!this.selectedData.length) {
-          _g.toastMsg('warning', '请勾选数据')
+          _g.toastMsg('warning', '请勾选数据');
           return
         }
-        this.deleteLoading = !this.deleteLoading
-        let url = this.getUrl() + '/deletes'
+        this.deleteLoading = !this.deleteLoading;
+        let url = this.getUrl() + '/deletes';
         let data = {
           ids: this.getSelectedIds()
         }
         this.apiPost(url, data).then((res) => {
           this.handelResponse(res, (data) => {
-            _g.toastMsg('success', res.msg)
+            _g.toastMsg('success', res.msg);
             setTimeout(() => {
               _g.shallowRefresh(this.$route.name)
             }, 1500)

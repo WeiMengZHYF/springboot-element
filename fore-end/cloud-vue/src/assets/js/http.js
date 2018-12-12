@@ -14,8 +14,7 @@ const apiMethods = {
                 })
             })
         },
-        apiPost(url, data) {
-            console.info(data)
+        apiPost(url, data = {}) {
             return new Promise((resolve, reject) => {
                 axios.post(url, data).then((response) => {
                     resolve(response.data)

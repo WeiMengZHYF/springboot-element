@@ -19,30 +19,7 @@
         </el-input>
       </el-form-item>
       <el-form-item label="权限分配">
-       <!-- <div class="bor-gray h-400 ovf-y-auto bor-ra-5 bg-wh">
-          <div v-for="item in nodes">
-            <div class="bor-b-ccc bg-gra p-l-10 p-r-10">
-              <el-checkbox v-model="item.check" @change="selectProjectRule(item)">{{item.title}}</el-checkbox>
-            </div>
-            <div v-for="childItem in item.child">
-              <div class="p-l-20 bor-b-ccc">
-                <el-checkbox v-model="childItem.check" @change="selectModuleRule(childItem, item, childItem.child)">{{childItem.title}}</el-checkbox>
-              </div>
-              <div class="p-l-40 bor-b-ccc bg-gra">
-                <el-checkbox v-for="grandChildItem in childItem.child" v-model="grandChildItem.check" @change="selectActionRule(grandChildItem, childItem, item)">{{grandChildItem.title}}</el-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>-->
-        <el-tree
-                :data="nodes"
-                show-checkbox
-                default-expand-all
-                node-key="id"
-                ref="tree"
-                highlight-current
-                :props="defaultProps">
-        </el-tree>
+        <el-tree :data="nodes" show-checkbox default-expand-all  node-key="id" ref="tree"  highlight-current :props="defaultProps"/>
 
       </el-form-item>
 			<el-form-item>
@@ -82,15 +59,13 @@
     },
     methods: {
       add(form) {
-        this.form.rules = this.$refs.tree.getCheckedKeys().toString()
-       /* console.log(this.$refs.tree.getCheckedKeys().toString())
-        console.log(this.form)*/
+        this.form.rules = this.$refs.tree.getCheckedKeys().toString();
         this.$refs[form].validate((valid) => {
           if (valid) {
-            this.isLoading = !this.isLoading
+            this.isLoading = !this.isLoading;
             this.apiPost('admin/groups/save', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '添加成功')
+              this.handelResponse(res, () => {
+                _g.toastMsg('success', '添加成功');
                 setTimeout(() => {
                   this.goback()
                 }, 1500)
@@ -117,7 +92,7 @@
       }
     },
     created() {
-      this.getRules()
+      this.getRules();
       this.getGroups()
     },
     mixins: [http, fomrMixin]

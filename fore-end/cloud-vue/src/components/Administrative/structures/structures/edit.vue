@@ -41,10 +41,10 @@
       edit(form) {
         this.$refs[form].validate((valid) => {
           if (valid) {
-            this.isLoading = !this.isLoading
+            this.isLoading = !this.isLoading;
             this.apiPost('admin/structures/update', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '编辑成功')
+              this.handelResponse(res, () => {
+                _g.toastMsg('success', '编辑成功');
                 setTimeout(() => {
                   this.goback()
                 }, 1500)
@@ -60,25 +60,25 @@
           this.handelResponse(res, (data) => {
             _(data).forEach((ret) => {
               ret.id = ret.id.toString()
-            })
+            });
             this.options = this.options.concat(data)
           })
         })
       },
       getStructureInfo() {
-        this.form.id = this.$route.params.id
+        this.form.id = this.$route.params.id;
         this.apiGet('admin/structures/edit/' + this.form.id).then((res) => {
           this.handelResponse(res, (data) => {
-            data.pid = data.pid.toString()
-            this.form.id = data.id
-            this.form.name = data.name
+            data.pid = data.pid.toString();
+            this.form.id = data.id;
+            this.form.name = data.name;
             this.form.pid = data.pid
           })
         })
       }
     },
     created() {
-      this.getStructures()
+      this.getStructures();
       this.getStructureInfo()
     },
     mixins: [http, fomrMixin]

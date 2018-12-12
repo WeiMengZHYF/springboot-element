@@ -21,22 +21,22 @@ const commonFn = {
   toastMsg(type, msg) {
     switch (type) {
       case 'normal':
-        bus.$message(msg)
-        break
+        bus.$message(msg);
+        break;
       case 'success':
         bus.$message({
           message: msg,
           type: 'success'
-        })
-        break
+        });
+        break;
       case 'warning':
         bus.$message({
           message: msg,
           type: 'warning'
-        })
-        break
+        });
+        break;
       case 'error':
-        bus.$message.error(msg)
+        bus.$message.error(msg);
         break
     }
   },
@@ -44,15 +44,15 @@ const commonFn = {
     store.dispatch(cate, [])
   },
   getHasRule(val) {
-    const moduleRule = 'admin'
-    let userInfo = Lockr.get('userInfo')
-    if (userInfo.id == 1) {
+    const moduleRule = 'admin';
+    let userInfo = Lockr.get('userInfo');
+    if (userInfo.id === 1) {
       return true
     } else {
-      let authList = moduleRule + Lockr.get('authList')
+      let authList = moduleRule + Lockr.get('authList');
       return _.includes(authList, val)
     }
   }
-}
+};
 
 export default commonFn

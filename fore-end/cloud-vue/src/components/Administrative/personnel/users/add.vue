@@ -73,32 +73,31 @@
     },
     methods: {
       selectCheckbox() {
-        let temp = false
+        let temp = false;
         _(this.groupOptions).forEach((res) => {
           if (this.selectedGroups.toString().indexOf(res.title) > -1) {
             this.selectedIds.push(res.id)
           }
-        })
+        });
         if (this.selectedIds.length) {
-          this.form.groups = _.cloneDeep(this.selectedIds)
+          this.form.groups = _.cloneDeep(this.selectedIds);
           temp = true
         }
-        this.selectedIds = []
+        this.selectedIds = [];
         return temp
       },
-      add(form) {
+      add() {
         if (!this.selectCheckbox()) {
-          _g.toastMsg('warning', '请选择用户组')
+          _g.toastMsg('warning', '请选择用户组');
           return
         }
-        console.log('res = ', _g.j2s(this.form))
         this.$refs.form.validate((pass) => {
           if (pass) {
-            this.isLoading = !this.isLoading
+            this.isLoading = !this.isLoading;
             this.apiPost('admin/users', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '添加成功')
-                _g.clearVuex('setUsers')
+              this.handelResponse(res, () => {
+                _g.toastMsg('success', '添加成功');
+                _g.clearVuex('setUsers');
                 setTimeout(() => {
                   this.goback()
                 }, 1500)
@@ -125,7 +124,7 @@
       }
     },
     created() {
-      this.getAllGroups()
+      this.getAllGroups();
       this.getAllOrgs()
     },
     mixins: [http, fomrMixin]

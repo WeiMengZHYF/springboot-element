@@ -106,11 +106,11 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          _g.openGlobalLoading()
+          _g.openGlobalLoading();
           this.apiDelete('admin/users/', item.id).then((res) => {
-            _g.closeGlobalLoading()
+            _g.closeGlobalLoading();
             this.handelResponse(res, (data) => {
-              _g.toastMsg('success', '删除成功')
+              _g.toastMsg('success', '删除成功');
               setTimeout(() => {
                 _g.shallowRefresh(this.$route.name)
               }, 1500)
@@ -121,24 +121,23 @@
         })
       },
       getAllUsers() {
-        this.loading = true
+        this.loading = true;
         const data = {
           params: {
             realname: this.realname,
             page: this.currentPage,
             rows: this.limit
           }
-        }
-        this.apiGet('admin/users', data).then((res) => {
-          console.log('res = ', _g.j2s(res))
+        };
+        this.apiPost('admin/users', data).then((res) => {
           this.handelResponse(res, (data) => {
-            this.tableData = data.list
+            this.tableData = data.list;
             this.dataCount = data.total
           })
         })
       },
       getCurrentPage() {
-        let data = this.$route.query
+        let data = this.$route.query;
         if (data) {
           if (data.page) {
             this.currentPage = parseInt(data.page)
@@ -148,7 +147,7 @@
         }
       },
       getRealname() {
-        let data = this.$route.query
+        let data = this.$route.query;
         if (data) {
           if (data.realname) {
             this.realname = data.realname
@@ -158,8 +157,8 @@
         }
       },
       init() {
-        this.getRealname()
-        this.getCurrentPage()
+        this.getRealname();
+        this.getCurrentPage();
         this.getAllUsers()
       }
     },

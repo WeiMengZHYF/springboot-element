@@ -13,7 +13,7 @@ const listMixin = {
       this.multipleSelection = val
     },
     getCurrentPage() {
-      let data = this.$route.query
+      let data = this.$route.query;
       if (data) {
         if (data.page) {
           this.currentPage = parseInt(data.page)
@@ -23,7 +23,7 @@ const listMixin = {
       }
     },
     getKeywords() {
-      let data = this.$route.query
+      let data = this.$route.query;
       if (data) {
         if (data.keywords) {
           this.keywords = data.keywords

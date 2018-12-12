@@ -15,9 +15,7 @@
 		</div>
 	</el-dialog>
 </template>
-<style>
 
-</style>
 <script>
   import http from '../../assets/js/http'
 
@@ -54,11 +52,11 @@
           if (pass) {
             this.disable = !this.disable
             this.apiPost('admin/setInfo', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '修改成功')
-                Lockr.rm('authKey')
-                Lockr.rm('authList')
-                Lockr.rm('sessionId')
+              this.handelResponse(res, () => {
+                _g.toastMsg('success', '修改成功');
+                Lockr.rm('authKey');
+                Lockr.rm('authList');
+                Lockr.rm('sessionId');
                 setTimeout(() => {
                   router.replace('/')
                 }, 1500)

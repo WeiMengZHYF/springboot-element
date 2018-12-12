@@ -100,7 +100,7 @@
       }
     },
     created() {
-      this.apiGet('admin/menus').then((res) => {
+      this.apiPost('admin/menus').then((res) => {
         this.handelResponse(res, (data) => {
           this.tableData = data
         })

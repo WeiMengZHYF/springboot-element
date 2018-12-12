@@ -1,6 +1,6 @@
 <template>
 	<el-dialog ref="dialog" custom-class="bg-wh tx-c box-shadow-none">
-		<img :src="url">
+		<img :src="url"/>
 	</el-dialog>
 </template>
 <style>
