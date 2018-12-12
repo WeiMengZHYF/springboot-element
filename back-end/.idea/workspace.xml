@@ -1,90 +1,357 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2591f1a0-5c66-4e21-a0d3-f362994fe1bb" name="Default" comment="" />
+    <list default="true" id="2591f1a0-5c66-4e21-a0d3-f362994fe1bb" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/CloudServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-server/cloud-config-server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-server/src/main/java/cloud/config/server/ConfigServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-config-server/src/main/java/cloud/config/server/ConfigServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-eureka-server/cloud-eureka-server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-eureka-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-eureka-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-eureka-server/src/main/java/cloud/eureka/server/EurekaServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-eureka-server/src/main/java/cloud/eureka/server/EurekaServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/.factorypath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/cloud-simple-service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/cloud-vue.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/CloundServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/DruidAutoConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/DruidProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/Swagger2Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/Swagger2Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/contants/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/contants/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminAccessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminGroupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminMenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminPostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminRuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminRuleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminStructureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminStructureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysSystemConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysSystemConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dto/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dto/TreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysSystemConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysSystemConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/DateTimeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminGroupsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminGroupsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminMenusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminMenusController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminPostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminPostsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminRulesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminRulesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminStructuresController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminStructuresController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/UploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/META-INF/spring.factories" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-vue-parent.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/cloud-zipkin-ui.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/src/main/java/cloud/zipkin/ZipkinServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/src/main/java/cloud/zipkin/ZipkinServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-vue-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-vue-parent/pom.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cloud-vue-parent/target/" />
+    <ignored path="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/target/" />
+    <ignored path="$PROJECT_DIR$/cloud-vue-parent/cloud-eureka-server/target/" />
+    <ignored path="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/target/" />
+    <ignored path="$PROJECT_DIR$/cloud-vue-parent/cloud-config-server/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/back_end$EurekaServerApplication.ic" NAME="EurekaServerApplication Coverage Results" MODIFIED="1544589702670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>cloud.eureka.server.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminGroupService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="779">
+              <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminMenuService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="737">
+              <caret line="62" column="53" lean-forward="true" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminPostService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminRuleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="154" column="56" lean-forward="true" selection-start-line="154" selection-start-column="56" selection-end-line="154" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminStructureService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminUserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/EncryptUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="386" column="25" selection-start-line="386" selection-start-column="25" selection-end-line="386" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysSystemConfigService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminAccessService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>spring.http.multipart.location</find>
+      <find>getMapper().</find>
+      <find>, produces = {&quot;application/json;charset=UTF-8&quot;}</find>
+      <find>druid</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>this.mapper.</replace>
+    </replaceStrings>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminMenu.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminPost.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminRule.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminStructure.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminUser.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysSystemConfig.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-zipkin-ui/src/main/java/cloud/zipkin/ZipkinServerApplication.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/bootstrap.properties" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/logback-spring.xml" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/cloud-vue.sql" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/Swagger2Config.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/contants/Constant.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminAccessService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminPostService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminStructureService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dto/TreeNode.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminAccess.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/model/SysAdminGroup.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/Category.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/DateTimeUtils.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/CommonController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/CloundServiceApplication.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/RestResult.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/WebUtils.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/exception/ParameterException.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/GlobalExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminGroupService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminPostsController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminGroupsController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminMenusController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminRulesController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminStructuresController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminUsersController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysConfigController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/CloudServiceApplication.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/WebMvcConfig.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-test.properties" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-dev.properties" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/UploadController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminMenuService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminRuleService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminUserService.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/LoginController.java" />
+        <option value="$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysSystemConfigService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/software/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="D:\software\apache-maven-3.5.4\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="back-end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="back-end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cloud-vue-parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="back-end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="back-end" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="back-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back-end" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="back-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back-end" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud-vue-parent" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544602063253" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\lukew\java\springboot-element\back-end\cloud-vue-parent\cloud-simple-service\src\main\java\cloud\simple\service\util\exception" />
+      <recent name="E:\lukew\java\springboot-element\back-end\cloud-vue-parent\cloud-simple-service\src\main\java\cloud\simple\service\util" />
+      <recent name="E:\lukew\java\springboot-element\back-end\cloud-vue-parent\cloud-simple-service\src\main\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -95,103 +362,105 @@
         </RuleState>
       </list>
     </option>
+    <option name="contentProportion" value="0.032786883" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+  <component name="RunManager" selected="Spring Boot.CloudServiceApplication">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CloudServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cloud-simple-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cloud.simple.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cloud.simple.service.CloudServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cloud-config-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cloud.config.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cloud.config.server.ConfigServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="cloud-eureka-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cloud.eureka.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cloud.eureka.server.EurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ZipkinServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cloud-zipkin-ui" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cloud.zipkin.ZipkinServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.CloudServiceApplication" />
+        <item itemvalue="Spring Boot.ConfigServerApplication" />
+        <item itemvalue="Spring Boot.EurekaServerApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -202,53 +471,442 @@
       <updated>1494400114433</updated>
       <workItem from="1494400116060" duration="27000" />
       <workItem from="1500011429852" duration="23000" />
+      <workItem from="1544585817163" duration="217000" />
+      <workItem from="1544586047231" duration="3010000" />
+      <workItem from="1544590389882" duration="11615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50000" />
+    <option name="totallyTimeSpent" value="14892000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24664879" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="JRebel" order="8" side_tool="true" />
+      <window_info id="Web" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Problems" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4532578" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41076487" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.60764873" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067025" side_tool="true" weight="0.6515581" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.9065156" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="SonarLint" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="JRebel Console" order="13" side_tool="true" />
+      <window_info anchor="bottom" id="Spring" order="14" />
+      <window_info anchor="bottom" id="Java Enterprise" order="15" />
+      <window_info anchor="bottom" id="JRebel Executor" order="16" />
+      <window_info anchor="bottom" id="Messages" order="17" weight="0.75637394" />
+      <window_info anchor="bottom" id="Run Dashboard" order="18" sideWeight="0.49932975" weight="0.6515581" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="Maven" order="10" />
+      <window_info anchor="right" id="SciView" order="11" />
+      <window_info anchor="right" id="Coverage" order="12" side_tool="true" weight="0.3297587" />
+      <window_info anchor="right" id="Bean Validation" order="13" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-annotations/1.5.10/swagger-annotations-1.5.10.jar!/io/swagger/annotations/Api.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-annotations/1.5.10/swagger-annotations-1.5.10-sources.jar!/io/swagger/annotations/Api.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/FastJsonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1234">
+          <caret line="75" column="20" lean-forward="true" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/base/BaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2430#2431#0" expanded="true" />
+            <element signature="e#2488#2489#0" expanded="true" />
+            <element signature="e#4478#4479#0" expanded="true" />
+            <element signature="e#4548#4549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/CaptchaConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/Swagger2Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.3.RELEASE/spring-webmvc-5.1.3.RELEASE.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="19" column="73" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/conf/WebMvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="65" column="180" selection-start-line="65" selection-start-column="180" selection-end-line="65" selection-end-column="180" />
+          <folding>
+            <element signature="e#1833#1871#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/contants/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dao/SysAdminAccessDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dao/SysAdminGroupDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dao/SysAdminMenuDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/dao/SysAdminPostDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/interceptor/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-441">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/CloudServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/bootstrap.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/META-INF/spring-devtools.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-test.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="44" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-config-repo/cloud-config-dev.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminUsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-845">
+          <caret line="31" column="14" lean-forward="true" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminStructuresController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminRulesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminPostsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1482">
+          <caret line="78" column="7" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminMenusController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysAdminGroupsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1212">
+          <caret line="76" column="56" selection-start-line="76" selection-start-column="56" selection-end-line="76" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/SysConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="27" column="58" lean-forward="true" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/UploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysSystemConfigDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminUserDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminStructureDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminRuleDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminPostDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminMenuDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminAccessDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/resources/mappers/SysAdminGroupDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminAccessService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminGroupService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminMenuService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="737">
+          <caret line="62" column="53" lean-forward="true" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminPostService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="110" column="37" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminRuleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="154" column="56" lean-forward="true" selection-start-line="154" selection-start-column="56" selection-end-line="154" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminStructureService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/util/EncryptUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="386" column="25" selection-start-line="386" selection-start-column="25" selection-end-line="386" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysAdminUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/web/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-vue-parent/cloud-simple-service/src/main/java/cloud/simple/service/domain/SysSystemConfigService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

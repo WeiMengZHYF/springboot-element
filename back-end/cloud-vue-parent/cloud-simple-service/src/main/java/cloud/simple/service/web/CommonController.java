@@ -18,6 +18,7 @@ import cloud.simple.service.util.EncryptUtil;
  *
  */
 public class CommonController {
+
 	@Autowired
 	private SysAdminUserService sysAdminUserService;
 	
@@ -27,6 +28,7 @@ public class CommonController {
 	 * @return
 	 */
 	public SysAdminUser getCurrentUser(){
+
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		String authKey = request.getHeader(Constant.AUTH_KEY);
 		if(StringUtils.isNotBlank(authKey)) {
