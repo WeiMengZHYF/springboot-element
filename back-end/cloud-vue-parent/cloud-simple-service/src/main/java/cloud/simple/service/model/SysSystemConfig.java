@@ -7,6 +7,7 @@ import cloud.simple.service.base.BaseEntity;
 
 @Table(name = "`sys_system_config`")
 public class SysSystemConfig  extends BaseEntity {
+
 	private static final long serialVersionUID = -3343040004793640240L;
 
 

@@ -16,14 +16,21 @@ import org.apache.commons.lang.time.DateUtils;
  */
 public class DateTimeUtils extends DateUtils{
 	
-	public static final String FULL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	private static final String FULL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
 	public static final String FULL_DATE_FORMAT_CN = "yyyy年MM月dd日 HH时mm分ss秒";
-	public static final String PART_DATE_FORMAT = "yyyy-MM-dd";
+
+	private static final String PART_DATE_FORMAT = "yyyy-MM-dd";
+
 	public static final String PART_DATE_FORMAT_CN = "yyyy年MM月dd日";
-	public static final String YEAR_DATE_FORMAT = "yyyy";
-	public static final String MONTH_DATE_FORMAT = "MM";
-	public static final String DAY_DATE_FORMAT = "dd";
-	public static final String WEEK_DATE_FORMAT = "week";
+
+	private static final String YEAR_DATE_FORMAT = "yyyy";
+
+	private static final String MONTH_DATE_FORMAT = "MM";
+
+	private static final String DAY_DATE_FORMAT = "dd";
+
+	private static final String WEEK_DATE_FORMAT = "week";
 	
 	
 	/**

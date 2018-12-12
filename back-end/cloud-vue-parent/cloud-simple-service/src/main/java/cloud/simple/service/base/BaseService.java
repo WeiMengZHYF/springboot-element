@@ -67,6 +67,13 @@ public interface BaseService<T extends BaseEntity> {
 	 */
     int deleteByPrimaryKey(Object key);
 
+	/**
+	 * 批量删除
+	 * @param key
+	 * @return
+	 */
+	void deleteByPrimaryKeys(List<Object> key);
+
     /**
 	*根据主键进行更新,这里最多只会更新一条数据
 	*参数为实体类

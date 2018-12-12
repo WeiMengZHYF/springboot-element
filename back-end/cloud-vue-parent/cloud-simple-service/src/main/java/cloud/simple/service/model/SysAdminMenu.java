@@ -60,7 +60,6 @@ public class SysAdminMenu  extends BaseEntity {
      * 权限id
      */
     @Column(name = "`rule_id`")
-    //@JSONField(name="rule_id") 
     private Integer ruleId;
     
     @Column(name = "`rule_name`")

@@ -39,12 +39,15 @@ public class Category {
 	public List<Map<String, Object>> getRawList() {
 		return rawList;
 	}
+
 	public void setRawList(List<Map<String, Object>> rawList) {
 		this.rawList = rawList;
 	}
+
 	public List<Map<String, Object>> getFormatList() {
 		return formatList;
 	}
+
 	public void setFormatList(List<Map<String, Object>> formatList) {
 		this.formatList = formatList;
 	}
@@ -66,13 +69,13 @@ public class Category {
 	
 	/**
 	 * 递归格式化分类前的字符
-	 * @param pid 分类id
+	 * @param cid 分类id
 	 * @param space 空白
 	 * @param level 级别
-	 * @param p_name 父名称
+	 * @param pName 父名称
 	 * @return
 	 */
-	private void _searchList( Object cid, String space, int level, Object pname){
+	private void _searchList( Object cid, String space, int level, Object pName){
 		List<Map<String, Object>> childs = this.getChild(cid);
 		//如果没有下级分类，结束递归
 		if(CollectionUtils.isEmpty(childs)) {
@@ -90,7 +93,7 @@ public class Category {
 				pre = Constant.ICON[1];
 				pad = StringUtils.isBlank(space) ? Constant.ICON[0] : "";
 			}
-			child.put("p_title", pname);
+			child.put("p_title", pName);
 			child.put("else", child.get(fields.get("name")));
 			child.put(fields.get("fullname"), (!cid.equals(0)? space + pre  : "") + child.get(fields.get("name")));
 			child.put("level", level);

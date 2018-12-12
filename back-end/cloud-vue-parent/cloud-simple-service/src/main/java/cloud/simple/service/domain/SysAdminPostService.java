@@ -11,17 +11,13 @@ import cloud.simple.service.model.SysAdminPost;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.entity.Example.Criteria;
+
 @Service
 public class SysAdminPostService extends BaseServiceImpl<SysAdminPost>{
 	
 	@Autowired
 	private Mapper<SysAdminPost> sysAdminPostDao;
 	
-	@Override
-	public Mapper<SysAdminPost> getMapper() {
-		return sysAdminPostDao;
-	}
-
 	public List<SysAdminPost> getDataList(String name) {
 		Example example = new Example(SysAdminPost.class,false);
 		Criteria criteria = example.createCriteria();

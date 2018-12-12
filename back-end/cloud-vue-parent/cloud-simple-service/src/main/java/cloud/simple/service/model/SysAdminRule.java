@@ -10,6 +10,7 @@ import cloud.simple.service.base.BaseEntity;
 
 @Table(name = "`sys_admin_rule`")
 public class SysAdminRule  extends BaseEntity{
+
 	private static final long serialVersionUID = 3783338463831001070L;
 
     /**

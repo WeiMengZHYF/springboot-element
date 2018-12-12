@@ -14,18 +14,14 @@ import cloud.simple.service.dao.SysAdminStructureDao;
 import cloud.simple.service.model.SysAdminStructure;
 import cloud.simple.service.util.BeanToMapUtil;
 import cloud.simple.service.util.Category;
-import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
+
 @Service
 public class SysAdminStructureService extends BaseServiceImpl<SysAdminStructure>{
 
 	@Autowired
 	private SysAdminStructureDao sysAdminStructureDao;
 	
-	@Override
-	public Mapper<SysAdminStructure> getMapper() {
-		return sysAdminStructureDao;
-	}
 
 	public List<Map<String, Object>> getDataList() {
 		Example example = new Example(SysAdminStructure.class);
@@ -37,9 +33,7 @@ public class SysAdminStructureService extends BaseServiceImpl<SysAdminStructure>
 		fields.put("name", "name");
 		fields.put("fullname", "title");
 		List<Map<String, Object>> rawList = Lists.newArrayList();
-		rootSysAdminStructure.forEach((m)->{
-			rawList.add(BeanToMapUtil.convertBean(m));
-		});
+		rootSysAdminStructure.forEach(m-> rawList.add(BeanToMapUtil.convertBean(m)) );
 		Category cate = new Category(fields, rawList);
 		return cate.getList(Integer.valueOf("0"));
 	}

@@ -27,18 +27,16 @@ package cloud.simple.service.conf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 import cloud.simple.service.interceptor.LoginInterceptor;
 
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig implements WebMvcConfigurer {
 	
-	@Value("${spring.http.multipart.location}")
+	@Value("${spring.servlet.multipart.location}")
 	private String multipartLocation;
+
 	@Autowired
 	private LoginInterceptor loginInterceptor;
 	
@@ -64,25 +62,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     
    @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 多个拦截器组成一个拦截器链
-        // addPathPatterns 用于添加拦截规则
-        // excludePathPatterns 用户排除拦截
         registry.addInterceptor(loginInterceptor).addPathPatterns("/admin/**")
-        .excludePathPatterns("/admin/login", "/admin/logout", "/admin/configs", "/admin/verify", "/static/**", "/upload/**", "/resoures/**", "swagger-resources/**","/v2/api-docs")
-        ;
-        super.addInterceptors(registry);
+        .excludePathPatterns("/admin/login", "/admin/logout", "/admin/configs", "/admin/verify", "/static/**", "/upload/**", "/resoures/**", "swagger-resources/**","/v2/api-docs");
     }
-
-
-	/**
-	 * 文件上传临时路径
-	 *//*
-	 @Bean
-	 MultipartConfigElement multipartConfigElement() {
-	    MultipartConfigFactory factory = new MultipartConfigFactory();
-	    factory.setLocation("/src/main/resources");
-	    return factory.createMultipartConfig();
-	}*/
 }
 
 

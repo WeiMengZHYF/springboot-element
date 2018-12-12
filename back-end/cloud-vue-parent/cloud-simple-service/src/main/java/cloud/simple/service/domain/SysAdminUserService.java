@@ -1,5 +1,6 @@
 package cloud.simple.service.domain;
 
+import cloud.simple.service.util.exception.ServiceException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +14,12 @@ import cloud.simple.service.dao.SysAdminUserDao;
 import cloud.simple.service.model.SysAdminUser;
 import cloud.simple.service.util.EncryptUtil;
 import cloud.simple.service.util.FastJsonUtils;
-import tk.mybatis.mapper.common.Mapper;
+
 @Service
 public class SysAdminUserService extends BaseServiceImpl<SysAdminUser>{
+
 	@Autowired
 	private SysAdminUserDao sysAdminUserDao;
-	
-	@Override
-	public Mapper<SysAdminUser> getMapper() {
-		return sysAdminUserDao;
-	}
 	
 	/**
 	 * 修改密码
@@ -32,37 +29,36 @@ public class SysAdminUserService extends BaseServiceImpl<SysAdminUser>{
 	 * @return 修改失败返回错误信息，修改成功返回authKey信息。
 	 */
 	public String setInfo(SysAdminUser currentUser, String old_pwd, String new_pwd) {
+
 		if (currentUser == null){
-			return FastJsonUtils.resultError(-400, "请先登录", null);
+			throw  new ServiceException(-400, "请先登录");
 		}
 		
 		if (StringUtils.isNotBlank(old_pwd)) {
-			return FastJsonUtils.resultError(-400, "旧密码必填", null);
+			throw  new ServiceException(-400, "旧密码必填");
 		}
 		
 		if(StringUtils.isNotBlank(new_pwd)) {
-			return FastJsonUtils.resultError(-400, "新密码必填", null);
+			throw  new ServiceException(-400, "新密码必填");
 		}
 		
 		if (old_pwd.equals(new_pwd)) {
-			return FastJsonUtils.resultError(-400, "新旧密码不能一样", null);
+			throw  new ServiceException(-400, "新旧密码不能一样");
 		}
 		
 		if (!currentUser.getPassword().equals(DigestUtils.md5Hex(old_pwd))) {
-			return FastJsonUtils.resultError(-400, "原密码错误", null);
+			throw  new ServiceException(-400, "原密码错误");
 		}
 		
 		if (!currentUser.getPassword().equals(DigestUtils.md5Hex(old_pwd))) {
-			return FastJsonUtils.resultError(-400, "原密码错误", null);
+			throw  new ServiceException(-400, "原密码错误");
 		}
 		SysAdminUser record = new SysAdminUser();
 		record.setId(currentUser.getId());
 		String md5NewPwd = DigestUtils.md5Hex(new_pwd);
 		record.setPassword(md5NewPwd);
 		sysAdminUserDao.updateByPrimaryKeySelective(record);
-		String authKey = EncryptUtil.encryptBase64(currentUser.getUsername()+"|"+md5NewPwd, Constant.SECRET_KEY);
-		//@TODO 更新缓存中auth_key
-		return FastJsonUtils.resultError(200, "修改成功", authKey);
+		return EncryptUtil.encryptBase64(currentUser.getUsername()+"|"+md5NewPwd, Constant.SECRET_KEY);
 	}
 
 	public PageInfo<SysAdminUser> getDataList(SysAdminUser record) {

@@ -2,8 +2,10 @@ package cloud.simple.service.dto;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class TreeNode extends HashMap<String, Object>{
+
 	private static final long serialVersionUID = 2740636334980858843L;
 
 	private String id;  
@@ -66,5 +68,22 @@ public class TreeNode extends HashMap<String, Object>{
                 ", name='" + name + '\'' +  
                 ", children=" + children +  
                 '}';  
-    }  
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TreeNode treeNode = (TreeNode) o;
+        return Objects.equals(id, treeNode.id) &&
+                Objects.equals(parentId, treeNode.parentId) &&
+                Objects.equals(name, treeNode.name) &&
+                Objects.equals(children, treeNode.children);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

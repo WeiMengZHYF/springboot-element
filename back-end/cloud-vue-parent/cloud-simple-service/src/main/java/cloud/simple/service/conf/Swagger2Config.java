@@ -36,7 +36,6 @@ public class Swagger2Config {
 				.enableUrlTemplating(true);
     }
     //构建 api文档的详细信息函数
-	@SuppressWarnings("deprecation")
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
 				//页面标题

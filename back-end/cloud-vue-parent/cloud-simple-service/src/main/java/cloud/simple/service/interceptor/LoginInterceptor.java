@@ -47,7 +47,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         }
 
         //检查账号有效性
-       SysAdminUser sessionAdminUser = (SysAdminUser) session.getAttribute(Constant.LOGIN_ADMIN_USER);
+        SysAdminUser sessionAdminUser = (SysAdminUser) session.getAttribute(Constant.LOGIN_ADMIN_USER);
         if (sessionAdminUser == null) {
             String decryptAuthKey = EncryptUtil.decryptBase64(authKey, Constant.SECRET_KEY);
             String[] auths = decryptAuthKey.split("\\|");
@@ -61,14 +61,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             session.setAttribute(Constant.LOGIN_ADMIN_USER, sessionAdminUser);
         }
 
-        if (sessionAdminUser == null || sessionAdminUser.getStatus().equals(0)) {
+        if (sessionAdminUser == null || sessionAdminUser.getStatus() == (0)) {
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter writer = response.getWriter();
             writer.write(FastJsonUtils.resultError(-101, "账号已被删除或禁用", null));
             writer.flush();
             return false;
         }
-
         return true;
     }
 }
