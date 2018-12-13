@@ -31,7 +31,7 @@
       },
       changeAttrInBtnGroup(cate) {
         if (!this.selectedData.length) {
-          this.$global.toastMsg('warning', '请勾选数据');
+          this.$message.warning( '请勾选数据');
           return
         }
         let word = '';
@@ -49,10 +49,8 @@
         };
         this.apiPost(url, data).then((res) => {
           this.handelResponse(res, () => {
-            this.$global.toastMsg('success', word + '成功');
-            setTimeout(() => {
-              this.$global.shallowRefresh(this.$route.name)
-            }, 1500)
+            this.$message.success( word + '成功');
+            this.$router.history.go(-1);
           }, () => {
             if (cate === 1) {
               this.enableLoading = !this.enableLoading
@@ -64,7 +62,7 @@
       },
       deleteDatasInBtnGroup() {
         if (!this.selectedData.length) {
-          this.$global.toastMsg('warning', '请勾选数据');
+          this.$message.warning('请勾选数据');
           return
         }
         this.deleteLoading = !this.deleteLoading;
@@ -74,10 +72,8 @@
         };
         this.apiPost(url, data).then((res) => {
           this.handelResponse(res, () => {
-            this.$global.toastMsg('success', res.msg);
-            setTimeout(() => {
-              this.$global.shallowRefresh(this.$route.name)
-            }, 1500)
+            this.$message.success( res.msg);
+            this.$router.history.go(-1);
           }, () => {
             this.deleteLoading = !this.deleteLoading
           })

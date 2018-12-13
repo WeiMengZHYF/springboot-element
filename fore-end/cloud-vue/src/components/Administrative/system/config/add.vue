@@ -77,7 +77,7 @@
             this.isLoading = !this.isLoading;
             this.apiPost('admin/systemConfigs', this.form).then((res) => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '提交成功');
+                this.$message.success('提交成功');
                 this.isLoading = !this.isLoading
               }, () => {
                 this.isLoading = !this.isLoading

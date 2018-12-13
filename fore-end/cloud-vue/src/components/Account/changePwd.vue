@@ -53,7 +53,7 @@
             this.disable = !this.disable;
             this.apiPost('admin/setInfo', this.form).then((res) => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '修改成功');
+                this.$message.success( '修改成功');
                 this.$storage.rm('authKey');
                 this.$storage.rm('authList');
                 this.$storage.rm('sessionId');

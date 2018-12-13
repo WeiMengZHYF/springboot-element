@@ -140,14 +140,14 @@
               this.$storage.rm('userInfo');
               this.$storage.rm('sessionId');
               this.$cookies.remove('rememberPwd');
-              this.$global.toastMsg('success', '退出成功');
+              this.$message.success('退出成功');
               setTimeout(() => {
                 this.$router.replace('/')
               }, 1500)
             })
           })
         }).catch(() => {
-
+          this.$message.error('退出登录失败');
         })
       },
       switchTopMenu(item) {
@@ -189,10 +189,8 @@
       let authKey = this.$storage.get('authKey');
       let sessionId = this.$storage.get('sessionId');
       if (!authKey || !sessionId) {
-        this.$global.toastMsg('warning', '您尚未登录');
-        setTimeout(() => {
-          this.$route.replace('/')
-        }, 1500);
+        this.$message.warning('您尚未登录');
+        this.$route.replace('/');
         return
       }
       this.getUsername();

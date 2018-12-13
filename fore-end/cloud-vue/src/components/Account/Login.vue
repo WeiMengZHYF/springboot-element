@@ -89,7 +89,7 @@
                   this.$cookies.set('rememberPwd', true, { expires: 1 })
                 }
                 this.resetCommonData(res.data);
-                this.$global.toastMsg('success', '登录成功');
+                this.$message.success('登录成功');
                 this.$router.push({ path: '/home/menu/list' });
               }
             })

@@ -5,23 +5,25 @@
                 <i class="el-icon-plus"></i>&nbsp;添加部门
             </router-link>
         </el-row>
-        <el-table :data="tableData"  style="width: 100%" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
-            <el-table-column  type="selection" > </el-table-column>
-            <el-table-column  label="部门结构" prop="title" align="center"></el-table-column>
-            <el-table-column  label="部门名称" prop="name" align="center"></el-table-column>
-            <el-table-column  label="状态"  prop="status" align="center">
+        <el-table :data="tableData" style="width: 100%" @selection-change="selectItem" :highlight-current-row="true"
+                  border :fit="true">
+            <el-table-column type="selection"></el-table-column>
+            <el-table-column label="部门结构" prop="title" align="center"></el-table-column>
+            <el-table-column label="部门名称" prop="name" align="center"></el-table-column>
+            <el-table-column label="状态" prop="status" align="center">
                 <template slot-scope="scope" align="center">
                     {{ scope.row.status | status }}
                 </template>
             </el-table-column>
-            <el-table-column  label="操作" width="200" align="center">
+            <el-table-column label="操作" width="200" align="center">
                 <template slot-scope="scope" align="center">
   					<span>
-  						<router-link :to="{ name: 'structuresEdit', params: { id: scope.row.id }}" class="el-button el-button--primary el-button--small">
+  						<router-link :to="{ name: 'structuresEdit', params: { id: scope.row.id }}"
+                                     class="el-button el-button--primary el-button--small">
   						    编辑
   						</router-link>
   					</span>
-                    <el-button size="small"   type="danger"  @click="confirmDelete(scope.row)">删除</el-button>
+                    <el-button size="small" type="danger" @click="confirmDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -49,17 +51,15 @@
           type: 'warning'
         }).then(() => {
           this.$global.openGlobalLoading();
-          this.apiDelete('admin/structures/delete/', item.id).then((res) => {
+          this.apiDelete('admin/structures/delete/', item.id).then(res => {
             this.$global.closeGlobalLoading();
             this.handelResponse(res, () => {
-              this.$global.toastMsg('success', '删除成功');
-              setTimeout(() => {
-                this.$global.shallowRefresh(this.$route.name)
-              }, 1500)
+              this.$message.success('删除成功');
+              this.$router.history.go(-1);
             })
           })
         }).catch(() => {
-          // handle error
+          this.$message.error('删除失败');
         })
       },
       getStructures() {
@@ -73,11 +73,8 @@
     created() {
       this.getStructures()
     },
-    computed: {
-
-    },
-    components: {
-    },
+    computed: {},
+    components: {},
     mixins: [http]
   }
 </script>

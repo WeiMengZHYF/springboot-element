@@ -53,13 +53,11 @@
           this.apiDelete('admin/groups/delete/', item.id).then((res) => {
             this.$global.closeGlobalLoading();
             this.handelResponse(res, () => {
-              this.$global.toastMsg('success', '删除成功');
-              setTimeout(() => {
-                this.$global.shallowRefresh(this.$route.name)
-              }, 1500)
+              this.$message.success('删除成功');
+              this.$router.history.go(-1);
             })
           })
-        }).catch(() => this.$global.toastMsg('error', '删除失败'))
+        }).catch(() => this.$message.error('删除失败'))
       },
       getgroups() {
         this.apiGet('admin/groups').then((res) => {

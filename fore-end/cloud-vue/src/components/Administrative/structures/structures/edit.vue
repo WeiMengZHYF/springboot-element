@@ -1,20 +1,20 @@
 <template>
-  <el-row>
-    <el-form ref="form" :model="form" :rules="rules" label-width="130px">
-      <el-form-item label="部门名称" prop="name">
-        <el-input v-model.trim="form.name" ></el-input>
-      </el-form-item>
-      <el-form-item label="父级部门" prop="pid">
-        <el-select v-model="form.pid" placeholder="父级部门">
-          <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="edit('form')" :loading="isLoading">提交</el-button>
-        <el-button @click="$router.history.go(-1)">返回</el-button>
-      </el-form-item>
-    </el-form>
-  </el-row>
+    <el-row>
+        <el-form ref="form" :model="form" :rules="rules" label-width="130px">
+            <el-form-item label="部门名称" prop="name">
+                <el-input v-model.trim="form.name"></el-input>
+            </el-form-item>
+            <el-form-item label="父级部门" prop="pid">
+                <el-select v-model="form.pid" placeholder="父级部门">
+                    <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="edit('form')" :loading="isLoading">提交</el-button>
+                <el-button @click="$router.history.go(-1)">返回</el-button>
+            </el-form-item>
+        </el-form>
+    </el-row>
 </template>
 <script>
   import http from '../../../../assets/js/http'
@@ -44,10 +44,8 @@
             this.isLoading = !this.isLoading;
             this.apiPost('admin/structures/update', this.form).then((res) => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '编辑成功');
-                setTimeout(() => {
-                  this.$router.history.go(-1);
-                }, 1500)
+                this.$message.success('编辑成功');
+                this.$router.history.go(-1);
               }, () => {
                 this.isLoading = !this.isLoading
               })

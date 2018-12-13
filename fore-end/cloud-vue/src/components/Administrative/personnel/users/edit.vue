@@ -86,9 +86,8 @@
         return temp
       },
       add() {
-
         if (!this.selectCheckbox()) {
-          this.$global.toastMsg('warning', '请选择用户组');
+          this.$message.warning('请选择用户组');
           return
         }
         this.$refs.form.validate((pass) => {
@@ -98,9 +97,9 @@
               this.form.password = this.password
             }
             this.form.id = this.id;
-            this.apiPost('admin/users/update/', this.form).then((res) => {
+            this.apiPost('admin/users/update/', this.form).then(res => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '添加成功');
+                this.$message.success('添加成功');
                 this.$global.clearVuex('setUsers');
                 setTimeout(() => {
                   this.$router.history.go(-1);

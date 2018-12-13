@@ -1,6 +1,8 @@
 import axios from 'axios'
-import global from './global'
 import storage from 'lockr'
+import Vue from 'vue'
+
+const msgInstance = new Vue();
 
 const apiMethods = {
   methods: {
@@ -9,11 +11,7 @@ const apiMethods = {
         axios.get(url, data).then(response => resolve(response.data))
           .catch(error => {
             reject(error);
-            global.closeGlobalLoading();
-            bus.$message({
-              message: '请求超时，请检查网络',
-              type: 'warning'
-            })
+            msgInstance.$message.warning('请求超时，请检查网络');
           })
       })
     },
@@ -22,10 +20,7 @@ const apiMethods = {
         axios.post(url, data).then(response => resolve(response.data))
           .catch(response => {
             reject(response);
-            bus.$message({
-              message: '请求超时，请检查网络',
-              type: 'warning'
-            })
+            msgInstance.$message.warning('请求超时，请检查网络')
           })
       })
     },
@@ -34,16 +29,11 @@ const apiMethods = {
         axios.delete(url + id).then(response => resolve(response.data))
           .catch(response => {
             reject(response);
-            global.closeGlobalLoading();
-            bus.$message({
-              message: '请求超时，请检查网络',
-              type: 'warning'
-            })
+            msgInstance.$message.warning('请求超时，请检查网络');
           })
       })
     },
     handelResponse(response, callback, errorCallback) {
-      global.closeGlobalLoading();
       if (response.success) {
         callback(response.data)
       } else {
@@ -67,20 +57,16 @@ const apiMethods = {
                 })
               })
             } else {
-              global.toastMsg('error', res.error);
-              setTimeout(() => {
-                this.$router.replace('/')
-              }, 1500)
+              msgInstance.$message.error(res.error);
+              this.$router.replace('/')
             }
             break;
           case 103:
-            global.toastMsg('error', res.error);
-            setTimeout(() => {
-              this.$router.replace('/')
-            }, 1500);
+            msgInstance.$message.error(res.error);
+            this.$router.replace('/');
             break;
           default :
-            global.toastMsg('error', res.error)
+            msgInstance.$message.error(res.error)
         }
       } else {
         console.log('default error')
@@ -88,7 +74,7 @@ const apiMethods = {
     },
     resetCommonData(data) {
       _(data.menusList).forEach((res, key) => {
-        if (key == 0) {
+        if (key === 0) {
           res.selected = true
         } else {
           res.selected = false
@@ -112,27 +98,18 @@ const apiMethods = {
         if (routerUrl !== path) {
           this.$router.replace(routerUrl)
         } else {
-          global.shallowRefresh(this.$route.name)
+          this.$router.history.go(-1);
         }
       }, 1000)
     },
     reAjax(url, data) {
       return new Promise((resolve, reject) => {
-        axios.post(url, data).then((response) => {
-          resolve(response.data)
-        }, (response) => {
-          reject(response);
-          bus.$message({
-            message: '请求超时，请检查网络',
-            type: 'warning'
+        axios.post(url, data).then(response => resolve(response.data))
+          .catch(response => {
+            reject(response);
+            msgInstance.$message.warning('请求超时，请检查网络');
           })
-        })
       })
-    }
-  },
-  computed: {
-    showLoading() {
-      return store.state.globalLoading
     }
   }
 };

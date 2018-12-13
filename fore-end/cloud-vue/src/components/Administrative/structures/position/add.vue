@@ -2,7 +2,7 @@
     <el-row>
         <el-form ref="form" :model="form" :rules="rules" label-width="130px">
             <el-form-item label="岗位名称" prop="name">
-                <el-input v-model.trim="form.name" ></el-input>
+                <el-input v-model.trim="form.name"></el-input>
             </el-form-item>
             <el-form-item label="备注">
                 <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容"
@@ -41,10 +41,8 @@
             this.isLoading = !this.isLoading;
             this.apiPost('admin/posts/save/', this.form).then((res) => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '添加成功');
-                setTimeout(() => {
-                  this.$router.history.go(-1);
-                }, 1500)
+                this.$message.success('添加成功');
+                this.$router.history.go(-1);
               }, () => {
                 this.isLoading = !this.isLoading
               })

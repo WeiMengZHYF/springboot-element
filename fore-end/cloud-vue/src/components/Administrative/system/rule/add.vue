@@ -65,7 +65,7 @@
             this.isLoading = !this.isLoading;
             this.apiPost('admin/rules/save', this.form).then((res) => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '添加成功');
+                this.$message.success('添加成功');
                 setTimeout(() => {
                   this.$router.history.go(-1);
                 }, 1500)

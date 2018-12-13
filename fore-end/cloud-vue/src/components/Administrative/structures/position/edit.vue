@@ -1,18 +1,19 @@
 <template>
-  <el-row >
-    <el-form ref="form" :model="form" :rules="rules" label-width="130px">
-      <el-form-item label="岗位名称" prop="name">
-        <el-input v-model.trim="form.name" ></el-input>
-      </el-form-item>
-      <el-form-item label="备注">
-        <el-input type="textarea":autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="form.remark"> </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="edit('form')" :loading="isLoading">提交</el-button>
-        <el-button @click="$router.history.go(-1)">返回</el-button>
-      </el-form-item>
-    </el-form>
-  </el-row>
+    <el-row>
+        <el-form ref="form" :model="form" :rules="rules" label-width="130px">
+            <el-form-item label="岗位名称" prop="name">
+                <el-input v-model.trim="form.name"></el-input>
+            </el-form-item>
+            <el-form-item label="备注">
+                <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容"
+                          v-model="form.remark"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="edit('form')" :loading="isLoading">提交</el-button>
+                <el-button @click="$router.history.go(-1)">返回</el-button>
+            </el-form-item>
+        </el-form>
+    </el-row>
 </template>
 <script>
   import http from '../../../../assets/js/http'
@@ -41,10 +42,8 @@
             this.isLoading = !this.isLoading;
             this.apiPost('admin/posts/update', this.form).then((res) => {
               this.handelResponse(res, () => {
-                this.$global.toastMsg('success', '编辑成功');
-                setTimeout(() => {
-                  this.$router.history.go(-1);
-                }, 1500)
+                this.$message.success('编辑成功');
+                this.$router.history.go(-1);
               }, () => {
                 this.isLoading = !this.isLoading
               })

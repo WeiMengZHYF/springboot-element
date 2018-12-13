@@ -41,7 +41,6 @@
 </template>
 
 <script>
-  import btnGroup from '../../../Common/btn-group.vue'
   import http from '../../../../assets/js/http'
 
   export default {
@@ -69,17 +68,15 @@
           type: 'warning'
         }).then(() => {
           this.$global.openGlobalLoading();
-          this.apiDelete('admin/users/', item.id).then((res) => {
+          this.apiPost('admin/users/delete', item).then((res) => {
             this.$global.closeGlobalLoading();
-            this.handelResponse(res, (data) => {
-              this.$global.toastMsg('success', '删除成功');
-              setTimeout(() => {
-                this.$global.shallowRefresh(this.$route.name)
-              }, 1500)
+            this.handelResponse(res, () => {
+              this.$message.success('删除成功');
+              this.$router.history.go(-1);
             })
           })
         }).catch(() => {
-          // catch error
+          this.$message.error('删除失败');
         })
       },
       getAllUsers() {
@@ -128,15 +125,6 @@
       this.init()
     },
     computed: {
-      addShow() {
-        return this.$global.getHasRule('users-save')
-      },
-      editShow() {
-        return this.$global.getHasRule('users-update')
-      },
-      deleteShow() {
-        return this.$global.getHasRule('users-delete')
-      }
     },
     watch: {
       '$route'(to, from) {
@@ -144,7 +132,6 @@
       }
     },
     components: {
-      btnGroup
     },
     mixins: [http]
   }

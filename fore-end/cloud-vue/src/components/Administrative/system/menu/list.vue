@@ -53,14 +53,12 @@
           this.apiDelete('admin/menus/delete/', item.id).then((res) => {
             this.$global.closeGlobalLoading();
             this.handelResponse(res, () => {
-              this.$global.toastMsg('success', '删除成功');
-              setTimeout(() => {
-                this.$global.shallowRefresh(this.$route.name)
-              }, 1500)
+              this.$message.success( '删除成功');
+              this.$router.history.go(-1);
             })
           })
         }).catch(() => {
-          // handel error
+          this.$message.error('删除失败');
         })
       }
     },
