@@ -1,8 +1,8 @@
 <template>
-    <div class="m-l-50 m-t-30 w-500">
+    <el-row>
         <el-form ref="form" :model="form" :rules="rules" label-width="130px">
             <el-form-item label="系统名称" prop="SYSTEM_NAME">
-                <el-input v-model.trim="form.SYSTEM_NAME" class="h-40 w-200"></el-input>
+                <el-input v-model.trim="form.SYSTEM_NAME"></el-input>
             </el-form-item>
             <el-form-item label="LOGO">
                 <el-upload
@@ -32,14 +32,14 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="登录会话有效期" prop="LOGIN_SESSION_VALID">
-                <el-input v-model.number="form.LOGIN_SESSION_VALID" class="h-40 w-200"></el-input>
+                <el-input v-model.number="form.LOGIN_SESSION_VALID"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="add()" :loading="isLoading">提交</el-button>
             </el-form-item>
         </el-form>
         <preview ref="preview" :url="propsImg"></preview>
-    </div>
+    </el-row>
 </template>
 <script>
   import http from '../../../../assets/js/http'
@@ -76,8 +76,8 @@
           if (pass) {
             this.isLoading = !this.isLoading;
             this.apiPost('admin/systemConfigs', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '提交成功');
+              this.handelResponse(res, () => {
+                this.$global.toastMsg('success', '提交成功');
                 this.isLoading = !this.isLoading
               }, () => {
                 this.isLoading = !this.isLoading
@@ -99,8 +99,8 @@
         }
       },
       uploadFail(err, res, file) {
-        console.log('err = ', _g.j2s(err));
-        console.log('res = ', _g.j2s(res))
+        console.log('err = ', this.$global.j2s(err));
+        console.log('res = ', this.$global.j2s(res))
       },
       handleRemove(file, fileList) {
         console.log('file = ', file);

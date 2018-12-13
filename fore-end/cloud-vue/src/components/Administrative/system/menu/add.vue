@@ -1,44 +1,50 @@
 <template>
-	<div class="m-l-50 m-t-30 w-500">
-		<el-form ref="form" :model="form" :rules="rules" label-width="110px">
-			<el-form-item label="标题" prop="title">
-				<el-input v-model.trim="form.title" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="绑定权限标识" prop="ruleName">
-				<el-input v-model.trim="form.ruleName" class="h-40 fl w-200" :disabled="true"></el-input>
-				<el-button class="fl m-l-30" @click="openRule()">查找</el-button>
-			</el-form-item>
-			<el-form-item label="菜单类型" prop="menuType">
-				<el-radio-group v-model="form.menuType">
-					<el-radio label="1">普通三级菜单</el-radio>
-					<el-radio label="2">单页菜单</el-radio>
-					<el-radio label="3">外链</el-radio>
-				</el-radio-group>
-			</el-form-item>
-			<el-form-item label="上级菜单" prop="pid">
-				<el-select v-model="form.pid" placeholder="上级菜单" class="w-200">
-					<el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
-				</el-select>
-			</el-form-item>
-			<el-form-item label="路径">
-				<el-input v-model.trim="form.url" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="模块" prop="module">
-				<el-input v-model.trim="form.module" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="所属菜单">
-				<el-input v-model.trim="form.menu" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="排序">
-				<el-input v-model="form.sort" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item>
-				<el-button type="primary" @click="add('form')" :loading="isLoading">提交</el-button>
-				<el-button @click="goback()">返回</el-button>
-			</el-form-item>
-		</el-form>
-		<ruleList ref="ruleList"></ruleList>
-	</div>
+    <el-row>
+        <el-form ref="form" :model="form" :rules="rules" label-width="110px">
+            <el-form-item label="标题" prop="title">
+                <el-input v-model.trim="form.title"></el-input>
+            </el-form-item>
+            <el-form-item label="绑定权限标识" prop="ruleName">
+                <el-row>
+                    <el-col :span="20">
+                        <el-input v-model.trim="form.ruleName"  :disabled="true"></el-input>
+                    </el-col>
+                    <el-col :span="3" style="margin-left: 5px">
+                        <el-button @click="openRule()">查找</el-button>
+                    </el-col>
+                </el-row>
+            </el-form-item>
+            <el-form-item label="菜单类型" prop="menuType">
+                <el-radio-group v-model="form.menuType">
+                    <el-radio label="1">普通三级菜单</el-radio>
+                    <el-radio label="2">单页菜单</el-radio>
+                    <el-radio label="3">外链</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="上级菜单" prop="pid">
+                <el-select v-model="form.pid" placeholder="上级菜单">
+                    <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="路径">
+                <el-input v-model.trim="form.url"  ></el-input>
+            </el-form-item>
+            <el-form-item label="模块" prop="module">
+                <el-input v-model.trim="form.module"  ></el-input>
+            </el-form-item>
+            <el-form-item label="所属菜单">
+                <el-input v-model.trim="form.menu"  ></el-input>
+            </el-form-item>
+            <el-form-item label="排序">
+                <el-input v-model="form.sort" ></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="add('form')" :loading="isLoading">提交</el-button>
+                <el-button @click="$router.history.go(-1)">返回</el-button>
+            </el-form-item>
+        </el-form>
+        <ruleList ref="ruleList"></ruleList>
+    </el-row>
 </template>
 
 <script>
@@ -79,16 +85,16 @@
       }
     },
     methods: {
-      add(form) {
+      add() {
         this.$refs.form.validate((pass) => {
           if (pass) {
-            this.isLoading = !this.isLoading
+            this.isLoading = !this.isLoading;
             this.apiPost('admin/menus/save', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.clearVuex('setRules')
-                _g.toastMsg('success', '添加成功')
+              this.handelResponse(res, () => {
+                this.$global.clearVuex('setRules');
+                this.$global.toastMsg('success', '添加成功');
                 setTimeout(() => {
-                  this.goback()
+                  this.$router.history.go(-1);
                 }, 1500)
               }, () => {
                 this.isLoading = !this.isLoading
@@ -102,14 +108,14 @@
       }
     },
     created() {
-      this.apiGet('admin/menus').then((res) => {
+      this.apiPost('admin/menus').then(res => {
         this.handelResponse(res, (data) => {
-          let array = []
-          _(data).forEach((ret) => {
-            if (ret.level != 3 && ret.menuType == 1) {
+          let array = [];
+          data.forEach(ret => {
+            if (ret.level !== 3 && ret.menuType === 1) {
               array.push(ret)
             }
-          })
+          });
           this.options = this.options.concat(array)
         })
       })
