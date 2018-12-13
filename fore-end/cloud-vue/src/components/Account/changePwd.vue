@@ -1,19 +1,19 @@
 <template>
-	<el-dialog ref="dialog" custom-class="w-400 h-300" title="修改密码">
-		<div class="ovf-auto">
-			<el-form ref="form" :model="form" :rules="rules" label-width="80px">
-				<el-form-item label="旧密码" prop="old_pwd">
-					<el-input v-model.trim="form.old_pwd"></el-input>
-				</el-form-item>
-				<el-form-item label="新密码" prop="new_pwd">
-					<el-input v-model.trim="form.new_pwd"></el-input>
-				</el-form-item>
-			</el-form>
-		</div>
-		<div class="p-t-20">
-			<el-button type="primary" class="fl m-l-20" :disabled="disable" @click="submit()">提交</el-button>
-		</div>
-	</el-dialog>
+    <el-dialog ref="dialog" custom-class="w-400 h-300" title="修改密码">
+        <div class="ovf-auto">
+            <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+                <el-form-item label="旧密码" prop="old_pwd">
+                    <el-input v-model.trim="form.oldPwd"></el-input>
+                </el-form-item>
+                <el-form-item label="新密码" prop="new_pwd">
+                    <el-input v-model.trim="form.newPwd"></el-input>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div class="p-t-20">
+            <el-button type="primary" class="fl m-l-20" :disabled="disable" @click="submit()">提交</el-button>
+        </div>
+    </el-dialog>
 </template>
 
 <script>
@@ -25,15 +25,15 @@
         disable: false,
         form: {
           auth_key: '',
-          old_pwd: '',
-          new_pwd: ''
+          oldPwd: '',
+          newPwd: ''
         },
         rules: {
-          old_pwd: [
+          oldPwd: [
             { required: true, message: '请输入旧密码', trigger: 'blur' },
             { min: 6, max: 12, message: '长度在 6 到 12 个字符', trigger: 'blur' }
           ],
-          new_pwd: [
+          newPwd: [
             { required: true, message: '请输入新密码', trigger: 'blur' },
             { min: 6, max: 12, message: '长度在 6 到 12 个字符', trigger: 'blur' }
           ]
@@ -50,15 +50,15 @@
       submit() {
         this.$refs.form.validate((pass) => {
           if (pass) {
-            this.disable = !this.disable
+            this.disable = !this.disable;
             this.apiPost('admin/setInfo', this.form).then((res) => {
               this.handelResponse(res, () => {
-                _g.toastMsg('success', '修改成功');
-                Lockr.rm('authKey');
-                Lockr.rm('authList');
-                Lockr.rm('sessionId');
+                this.$global.toastMsg('success', '修改成功');
+                this.$storage.rm('authKey');
+                this.$storage.rm('authList');
+                this.$storage.rm('sessionId');
                 setTimeout(() => {
-                  router.replace('/')
+                  this.$router.replace('/')
                 }, 1500)
               }, () => {
                 this.disable = !this.disable
@@ -69,7 +69,7 @@
       }
     },
     created() {
-      this.form.auth_key = Lockr.get('authKey')
+      this.form.auth_key = this.$storage.get('authKey')
     },
     mixins: [http]
   }

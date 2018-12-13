@@ -1,6 +1,7 @@
 import Vue from 'vue'
 export default (function () {
   Vue.filter('status', function (value) {
+    console.log('status filter : ',value);
     if (value === 1) {
       return '启用'
     } else if (value === 0) {

@@ -1,39 +1,39 @@
 <template>
-	<div class="m-l-50 m-t-30 w-500">
-		<el-form ref="form" :model="form" :rules="rules" label-width="130px">
-			<el-form-item label="用户名" prop="username">
-				<el-input v-model.trim="form.username" class="h-40 w-200" :maxlength=12 :disabled="true"></el-input>
-			</el-form-item>
-			<el-form-item label="密码">
-				<el-input v-model.trim="password" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="真实姓名" prop="realname">
-				<el-input v-model.trim="form.realname" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="所属组织架构" prop="structure_id">
-				<el-select v-model="form.structure_id" placeholder="请选择组织架构" class="w-200">
-					<el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
-				</el-select>
-			</el-form-item>
-			<el-form-item label="备注">
-				<el-input v-model.trim="form.remark" class="h-40 w-200"></el-input>
-			</el-form-item>
-			<el-form-item label="用户组">
-				<el-checkbox-group v-model="selectedGroups">
-					<el-checkbox v-for="item in groupOptions" :label="item.else" class="form-checkbox"></el-checkbox>
-				</el-checkbox-group>
-			</el-form-item>
-			<el-form-item>
-				<el-button type="primary" @click="add()" :loading="isLoading">提交</el-button>
-				<el-button @click="goback()">返回</el-button>
-			</el-form-item>
-		</el-form>
-	</div>
+    <div class="m-l-50 m-t-30 w-500">
+        <el-form ref="form" :model="form" :rules="rules" label-width="130px">
+            <el-form-item label="用户名" prop="username">
+                <el-input v-model.trim="form.username" class="h-40 w-200" :maxlength=12 :disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+                <el-input v-model.trim="password" class="h-40 w-200"></el-input>
+            </el-form-item>
+            <el-form-item label="真实姓名" prop="realname">
+                <el-input v-model.trim="form.realname" class="h-40 w-200"></el-input>
+            </el-form-item>
+            <el-form-item label="所属组织架构" prop="structure_id">
+                <el-select v-model="form.structureId" placeholder="请选择组织架构" class="w-200">
+                    <el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="备注">
+                <el-input v-model.trim="form.remark" class="h-40 w-200"></el-input>
+            </el-form-item>
+            <el-form-item label="用户组">
+                <el-checkbox-group v-model="selectedGroups">
+                    <el-checkbox v-for="item in groupOptions" :label="item.else" class="form-checkbox"></el-checkbox>
+                </el-checkbox-group>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="add()" :loading="isLoading">提交</el-button>
+                <el-button @click="$router.history.go(-1)">返回</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
 </template>
 <style>
-	.form-checkbox:first-child{
-		margin-left: 15px;
-	}
+    .form-checkbox:first-child {
+        margin-left: 15px;
+    }
 </style>
 <script>
   import http from '../../../../assets/js/http'
@@ -47,9 +47,9 @@
         form: {
           username: '',
           realname: '',
-          structure_id: null,
+          structureId: null,
           remark: '',
-		  id : '',
+          id: '',
           groups: []
         },
         password: '',
@@ -64,7 +64,7 @@
           realname: [
             { required: true, message: '请输入真实姓名' }
           ],
-          structure_id: [
+          structureId: [
             { required: true, message: '请选择用户所属组织架构' }
           ]
         }
@@ -88,7 +88,7 @@
       add() {
 
         if (!this.selectCheckbox()) {
-          _g.toastMsg('warning', '请选择用户组');
+          this.$global.toastMsg('warning', '请选择用户组');
           return
         }
         this.$refs.form.validate((pass) => {
@@ -99,11 +99,11 @@
             }
             this.form.id = this.id;
             this.apiPost('admin/users/update/', this.form).then((res) => {
-              this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '添加成功');
-                _g.clearVuex('setUsers');
+              this.handelResponse(res, () => {
+                this.$global.toastMsg('success', '添加成功');
+                this.$global.clearVuex('setUsers');
                 setTimeout(() => {
-                  this.goback()
+                  this.$router.history.go(-1);
                 }, 1500)
               }, () => {
                 this.isLoading = !this.isLoading
@@ -119,7 +119,6 @@
             resolve(data)
           } else {
             this.apiGet('admin/groups').then((res) => {
-              console.log('groups = ', _g.j2s(res));
               this.handelResponse(res, (data) => {
                 resolve(data)
               })
@@ -128,28 +127,28 @@
         })
       },
       getAllOrgs() {
-        this.apiGet('admin/structures').then((res) => {
-          this.handelResponse(res, (data) => {
-            this.orgsOptions = data
-          })
+        this.apiGet('admin/structures').then(res => {
+          this.handelResponse(res, data => this.orgsOptions = data)
         })
       },
       async getCompleteData() {
         this.getAllOrgs();
         this.groupOptions = await this.getAllGroups();
-        this.apiGet('admin/users/edit/' + this.id).then((res) => {
+        this.apiGet('admin/users/edit/' + this.id).then(res => {
           this.handelResponse(res, (data) => {
             this.form.username = data.username;
             this.form.realname = data.realname;
-            this.form.structure_id = data.structure_id;
+            this.form.structureId = data.structureId;
             this.form.remark = data.remark;
-            _(data.groups).forEach((res1) => {
-              _(this.groupOptions).forEach((res2) => {
-                if (res1.title === res2.else) {
-                  this.selectedGroups.push(res1.title)
-                }
+            if (data.groups) {
+              data.groups.forEach((res1) => {
+                this.groupOptions.forEach(res2 => {
+                  if (res1.title === res2.else) {
+                    this.selectedGroups.push(res1.title)
+                  }
+                })
               })
-            })
+            }
           })
         })
       }

@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<el-button :loading="enableLoading" size="small" @click="changeAttrInBtnGroup(1)">启用</el-button>
-		<el-button :loading="disableLoading" size="small" @click="changeAttrInBtnGroup(0)">禁用</el-button>
-		<el-button :loading="deleteLoading" size="small" @click="deleteDatasInBtnGroup()">删除</el-button>
-	</div>
+    <div>
+        <el-button :loading="enableLoading" size="small" @click="changeAttrInBtnGroup(1)">启用</el-button>
+        <el-button :loading="disableLoading" size="small" @click="changeAttrInBtnGroup(0)">禁用</el-button>
+        <el-button :loading="deleteLoading" size="small" @click="deleteDatasInBtnGroup()">删除</el-button>
+    </div>
 </template>
 
 <script>
@@ -31,7 +31,7 @@
       },
       changeAttrInBtnGroup(cate) {
         if (!this.selectedData.length) {
-          _g.toastMsg('warning', '请勾选数据');
+          this.$global.toastMsg('warning', '请勾选数据');
           return
         }
         let word = '';
@@ -48,10 +48,10 @@
           status: cate
         };
         this.apiPost(url, data).then((res) => {
-          this.handelResponse(res, (data) => {
-            _g.toastMsg('success', word + '成功');
+          this.handelResponse(res, () => {
+            this.$global.toastMsg('success', word + '成功');
             setTimeout(() => {
-              _g.shallowRefresh(this.$route.name)
+              this.$global.shallowRefresh(this.$route.name)
             }, 1500)
           }, () => {
             if (cate === 1) {
@@ -64,19 +64,19 @@
       },
       deleteDatasInBtnGroup() {
         if (!this.selectedData.length) {
-          _g.toastMsg('warning', '请勾选数据');
+          this.$global.toastMsg('warning', '请勾选数据');
           return
         }
         this.deleteLoading = !this.deleteLoading;
         let url = this.getUrl() + '/deletes';
         let data = {
           ids: this.getSelectedIds()
-        }
+        };
         this.apiPost(url, data).then((res) => {
-          this.handelResponse(res, (data) => {
-            _g.toastMsg('success', res.msg);
+          this.handelResponse(res, () => {
+            this.$global.toastMsg('success', res.msg);
             setTimeout(() => {
-              _g.shallowRefresh(this.$route.name)
+              this.$global.shallowRefresh(this.$route.name)
             }, 1500)
           }, () => {
             this.deleteLoading = !this.deleteLoading
@@ -86,10 +86,10 @@
     },
     computed: {
       enableShow() {
-        return _g.getHasRule(this.type + '-enables')
+        return this.$global.getHasRule(this.type + '-enables')
       },
       deletesShow() {
-        return _g.getHasRule(this.type + '-deletes')
+        return this.$global.getHasRule(this.type + '-deletes')
       }
     },
     mixins: [http]
