@@ -3,6 +3,7 @@ package cloud.simple.service.base;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 import cloud.simple.service.util.exception.ServiceException;
 import com.github.pagehelper.PageHelper;
@@ -25,7 +26,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
     @Override
     public T selectOne(T record) {
 
-        return this.mapper.selectOne(record);
+        return Optional.ofNullable(this.select(record)).map(list ->list.get(0)).orElse(null);
     }
 
     /**
