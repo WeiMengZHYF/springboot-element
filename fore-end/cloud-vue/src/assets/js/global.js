@@ -1,9 +1,10 @@
+import storage from 'lockr'
 const commonFn = {
   j2s(obj) {
     return JSON.stringify(obj)
   },
   shallowRefresh(name) {
-    router.replace({ path: '/refresh', query: { name: name }})
+    router.replace({ path: '/refresh', query: { name: name } })
   },
   closeGlobalLoading() {
     setTimeout(() => {
@@ -44,12 +45,13 @@ const commonFn = {
     store.dispatch(cate, [])
   },
   getHasRule(val) {
+    console.log(bus.$route);
     const moduleRule = 'admin';
-    let userInfo = Lockr.get('userInfo');
+    let userInfo = storage.get('userInfo');
     if (userInfo.id === 1) {
       return true
     } else {
-      let authList = moduleRule + Lockr.get('authList');
+      let authList = moduleRule + storage.get('authList');
       return _.includes(authList, val)
     }
   }

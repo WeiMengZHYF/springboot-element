@@ -146,24 +146,23 @@
           confirmButtonText: '确定',
           cancelButtonText: '取消'
         }).then(() => {
-          _g.openGlobalLoading()
+          this.$global.openGlobalLoading();
           let data = {
-            authkey: Lockr.get('authKey'),
-            sessionId: Lockr.get('sessionId')
-          }
+            sessionId: this.$storage.get('sessionId')
+          };
           this.apiPost('admin/logout', data).then((res) => {
-            _g.closeGlobalLoading()
-            this.handelResponse(res, (data) => {
-              Lockr.rm('menus')
-              Lockr.rm('authKey')
-              Lockr.rm('rememberKey')
-              Lockr.rm('authList')
-              Lockr.rm('userInfo')
-              Lockr.rm('sessionId')
-              Cookies.remove('rememberPwd')
-              _g.toastMsg('success', '退出成功')
+            this.$global.closeGlobalLoading();
+            this.handelResponse(res, () => {
+              this.$storage.rm('menus');
+              this.$storage.rm('authKey');
+              this.$storage.rm('rememberKey');
+              this.$storage.rm('authList');
+              this.$storage.rm('userInfo');
+              this.$storage.rm('sessionId');
+              this.$cookies.remove('rememberPwd');
+              this.$global.toastMsg('success', '退出成功');
               setTimeout(() => {
-                router.replace('/')
+                this.$router.replace('/')
               }, 1500)
             })
           })
@@ -173,18 +172,18 @@
       },
       switchTopMenu(item) {
         if (!item.child) {
-          router.push(item.url)
+          this.$router.push(item.url)
         } else {
-          router.push(item.child[0].child[0].url)
+          this.$router.push(item.child[0].child[0].url)
         }
       },
       handleMenu(val) {
         switch (val) {
           case 'logout':
-            this.logout()
-            break
+            this.logout();
+            break;
           case 'changePwd':
-            this.changePwd()
+            this.changePwd();
             break
         }
       },
@@ -194,36 +193,36 @@
       getTitleAndLogo() {
         this.apiPost('admin/configs').then((res) => {
           this.handelResponse(res, (data) => {
-            document.title = data.SYSTEM_NAME
-            this.logo_type = data.LOGO_TYPE
-            this.title = data.SYSTEM_NAME
+            document.title = data.SYSTEM_NAME;
+            this.logo_type = data.LOGO_TYPE;
+            this.title = data.SYSTEM_NAME;
             this.img = window.HOST + data.SYSTEM_LOGO
           })
         })
       },
       getUsername() {
-        this.username = Lockr.get('userInfo').username
+        this.username = this.$storage.get('userInfo').username
       }
     },
     created() {
-      this.getTitleAndLogo()
-      let authKey = Lockr.get('authKey')
-      let sessionId = Lockr.get('sessionId')
+      this.getTitleAndLogo();
+      let authKey = this.$storage.get('authKey');
+      let sessionId = this.$storage.get('sessionId');
       if (!authKey || !sessionId) {
-        _g.toastMsg('warning', '您尚未登录')
+        this.$global.toastMsg('warning', '您尚未登录');
         setTimeout(() => {
-          router.replace('/')
-        }, 1500)
+          this.$route.replace('/')
+        }, 1500);
         return
       }
-      this.getUsername()
-      let menus = Lockr.get('menus')
-      this.menu = this.$route.meta.menu
-      this.module = this.$route.meta.module
-      this.topMenu = menus
+      this.getUsername();
+      let menus = this.$storage.get('menus');
+      this.menu = this.$route.meta.menu;
+      this.module = this.$route.meta.module;
+      this.topMenu = menus;
       _(menus).forEach((res) => {
-        if (res.module == this.module) {
-          this.menuData = res.child
+        if (res.module === this.module) {
+          this.menuData = res.child;
           res.selected = true
         } else {
           res.selected = false
@@ -235,7 +234,7 @@
         return store.state.routerShow
       },
       showLeftMenu() {
-        this.hasChildMenu = store.state.showLeftMenu
+        this.hasChildMenu = store.state.showLeftMenu;
         return store.state.showLeftMenu
       }
     },
@@ -246,10 +245,10 @@
     watch: {
       '$route'(to, from) {
         _(this.topMenu).forEach((res) => {
-          if (res.module == to.meta.module) {
-            res.selected = true
+          if (res.module === to.meta.module) {
+            res.selected = true;
             if (!to.meta.hideLeft) {
-              this.menu = to.meta.menu
+              this.menu = to.meta.menu;
               this.menuData = res.child
             }
           } else {

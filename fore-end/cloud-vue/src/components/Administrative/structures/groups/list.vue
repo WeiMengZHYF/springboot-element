@@ -1,42 +1,31 @@
 <template>
-    <div>
-        <div class="m-b-20">
-            <router-link class="btn-link-large add-btn" to="add">
-                <i class="el-icon-plus"></i>&nbsp;&nbsp;添加用户组
+    <el-row>
+        <el-row type="flex" justify="end" align="middle" class="el-table-panel">
+            <router-link class="el-button el-button--primary el-button--small" to="add">
+                <i class="el-icon-plus"></i>添加用户组
             </router-link>
-        </div>
-        <el-table :data="tableData" style="width: 100%" @selection-change="selectItem">
-            <el-table-column type="selection" width="50"/>
-            <el-table-column label="组名" prop="title"/>
-            <el-table-column label="描述"  prop="remark"/>
-            <el-table-column label="状态" prop="status" width="100">
+        </el-row>
+        <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
+            <el-table-column type="selection"></el-table-column>
+            <el-table-column align="center" label="组名" prop="title"></el-table-column>
+            <el-table-column align="center" label="描述" prop="remark"></el-table-column>
+            <el-table-column align="center" label="状态" prop="status">
                 <template scope="scope">
-                    <div>
-                        {{ scope.row.status | status }}
-                    </div>
+                    {{ scope.row.status | status }}
                 </template>
             </el-table-column>
             <el-table-column label="操作" width="200">
                 <template scope="scope">
-                    <div>
   					<span>
-  						<router-link :to="{ name: 'groupsEdit', params: { id: scope.row.id }}"class="btn-link edit-btn">
-  						编辑
+  						<router-link :to="{ name: 'groupsEdit', params: { id: scope.row.id }}" class="el-button el-button--primary el-button--small">
+  						    编辑
   						</router-link>
   					</span>
-                    <span>
-  						<el-button size="small"  type="danger" @click="confirmDelete(scope.row)">
-  						删除
-  						</el-button>
-  					</span>
-                    </div>
+                    <el-button size="small" type="danger" @click="confirmDelete(scope.row)"> 删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
-        <div class="pos-rel p-t-20">
-            <btnGroup :selectedData="multipleSelection" :type="'groups'"></btnGroup>
-        </div>
-    </div>
+    </el-row>
 </template>
 
 <script>
@@ -60,19 +49,17 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          _g.openGlobalLoading();
+          this.$global.openGlobalLoading();
           this.apiDelete('admin/groups/delete/', item.id).then((res) => {
-            _g.closeGlobalLoading();
+            this.$global.closeGlobalLoading();
             this.handelResponse(res, () => {
-              _g.toastMsg('success', '删除成功');
+              this.$global.toastMsg('success', '删除成功');
               setTimeout(() => {
-                _g.shallowRefresh(this.$route.name)
+                this.$global.shallowRefresh(this.$route.name)
               }, 1500)
             })
           })
-        }).catch(() => {
-          // handle error
-        })
+        }).catch(() => this.$global.toastMsg('error', '删除失败'))
       },
       getgroups() {
         this.apiGet('admin/groups').then((res) => {
@@ -85,17 +72,7 @@
     created() {
       this.getgroups()
     },
-    computed: {
-      addShow() {
-        return _g.getHasRule('groups-save')
-      },
-      editShow() {
-        return _g.getHasRule('groups-update')
-      },
-      deleteShow() {
-        return _g.getHasRule('groups-delete')
-      }
-    },
+    computed: {},
     components: {
       btnGroup
     },

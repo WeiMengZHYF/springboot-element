@@ -29,190 +29,191 @@ import usersEdit from './components/Administrative/personnel/users/edit.vue'
  */
 
 const routes = [
-    {
-        path: '/',
-        component: Home,
-        name: 'Home',
-        meta: {
-            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
-        }
-    },
-    {
-        path: '/login',
-        component: Login,
-        name: 'Login',
-        meta: {
-            requireAuth: false,  // 添加该字段，表示进入这个路由是需要登录的
-        }
-    },
-    {
-         path: '/home',
-         component: Home,
-         children: [
-             {path: '/refresh', component: refresh, name: 'refresh'}
-         ]
-     },
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'menu/list',
-                component: menuList,
-                name: 'menuList',
-                meta: {
-                    hideLeft: false,
-                    module: 'Administrative',
-                    menu: 'menu',
-                    requireAuth: true
-                }
-            },
-            {
-                path: 'menu/add',
-                component: menuAdd,
-                name: 'menuAdd',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'menu'}
-            },
-            {
-                path: 'menu/edit/:id',
-                component: menuEdit,
-                name: 'menuEdit',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'menu'}
-            }
-        ]
-    },
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'config/add',
-                component: systemConfig,
-                name: 'systemConfig',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'systemConfig'}
-            }
-        ]
-    },
-
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'rule/list',
-                component: ruleList,
-                name: 'ruleList',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'rule'}
-            },
-            {
-                path: 'rule/add',
-                component: ruleAdd,
-                name: 'ruleAdd',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'rule'}
-            },
-            {
-                path: 'rule/edit/:id',
-                component: ruleEdit,
-                name: 'ruleEdit',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'rule'}
-            }
-        ]
-    },
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'position/list',
-                component: positionList,
-                name: 'positionList',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'position'}
-            },
-            {
-                path: 'position/add',
-                component: positionAdd,
-                name: 'positionAdd',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'position'}
-            },
-            {
-                path: 'position/edit/:id',
-                component: positionEdit,
-                name: 'positionEdit',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'position'}
-            }
-        ]
-    },
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'structures/list',
-                component: structuresList,
-                name: 'structuresList',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'structures'}
-            },
-            {
-                path: 'structures/add',
-                component: structuresAdd,
-                name: 'structuresAdd',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'structures'}
-            },
-            {
-                path: 'structures/edit/:id',
-                component: structuresEdit,
-                name: 'structuresEdit',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'structures'}
-            }
-        ]
-    },
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'groups/list',
-                component: groupsList,
-                name: 'groupsList',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'groups'}
-            },
-            {
-                path: 'groups/add',
-                component: groupsAdd,
-                name: 'groupsAdd',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'groups'}
-            },
-            {
-                path: 'groups/edit/:id',
-                component: groupsEdit,
-                name: 'groupsEdit',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'groups'}
-            }
-        ]
-    },
-    {
-        path: '/home',
-        component: Home,
-        children: [
-            {
-                path: 'users/list',
-                component: usersList,
-                name: 'usersList',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'users'}
-            },
-            {
-                path: 'users/add',
-                component: usersAdd,
-                name: 'usersAdd',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'users'}
-            },
-            {
-                path: 'users/edit/:id',
-                component: usersEdit,
-                name: 'usersEdit',
-                meta: {requireAuth: true,hideLeft: false, module: 'Administrative', menu: 'users'}
-            }
-        ]
+  {
+    path: '/',
+    component: Home,
+    name: 'Home',
+    redirect:'/home/menu/list',
+    meta: {
+      requireAuth: true  // 添加该字段，表示进入这个路由是需要登录的
     }
-]
+  },
+  {
+    path: '/login',
+    component: Login,
+    name: 'Login',
+    meta: {
+      requireAuth: false  // 添加该字段，表示进入这个路由是需要登录的
+    }
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: '/refresh', component: refresh, name: 'refresh' }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'menu/list',
+        component: menuList,
+        name: 'menuList',
+        meta: {
+          hideLeft: false,
+          module: 'Administrative',
+          menu: 'menu',
+          requireAuth: true
+        }
+      },
+      {
+        path: 'menu/add',
+        component: menuAdd,
+        name: 'menuAdd',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'menu' }
+      },
+      {
+        path: 'menu/edit/:id',
+        component: menuEdit,
+        name: 'menuEdit',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'menu' }
+      }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'config/add',
+        component: systemConfig,
+        name: 'systemConfig',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'systemConfig' }
+      }
+    ]
+  },
+
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'rule/list',
+        component: ruleList,
+        name: 'ruleList',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'rule' }
+      },
+      {
+        path: 'rule/add',
+        component: ruleAdd,
+        name: 'ruleAdd',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'rule' }
+      },
+      {
+        path: 'rule/edit/:id',
+        component: ruleEdit,
+        name: 'ruleEdit',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'rule' }
+      }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'position/list',
+        component: positionList,
+        name: 'positionList',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'position' }
+      },
+      {
+        path: 'position/add',
+        component: positionAdd,
+        name: 'positionAdd',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'position' }
+      },
+      {
+        path: 'position/edit/:id',
+        component: positionEdit,
+        name: 'positionEdit',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'position' }
+      }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'structures/list',
+        component: structuresList,
+        name: 'structuresList',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'structures' }
+      },
+      {
+        path: 'structures/add',
+        component: structuresAdd,
+        name: 'structuresAdd',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'structures' }
+      },
+      {
+        path: 'structures/edit/:id',
+        component: structuresEdit,
+        name: 'structuresEdit',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'structures' }
+      }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'groups/list',
+        component: groupsList,
+        name: 'groupsList',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'groups' }
+      },
+      {
+        path: 'groups/add',
+        component: groupsAdd,
+        name: 'groupsAdd',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'groups' }
+      },
+      {
+        path: 'groups/edit/:id',
+        component: groupsEdit,
+        name: 'groupsEdit',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'groups' }
+      }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: 'users/list',
+        component: usersList,
+        name: 'usersList',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'users' }
+      },
+      {
+        path: 'users/add',
+        component: usersAdd,
+        name: 'usersAdd',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'users' }
+      },
+      {
+        path: 'users/edit/:id',
+        component: usersEdit,
+        name: 'usersEdit',
+        meta: { requireAuth: true, hideLeft: false, module: 'Administrative', menu: 'users' }
+      }
+    ]
+  }
+];
 export default routes

@@ -1,70 +1,35 @@
 <template>
-	<div>
-		<div class="m-b-20">
-  		<router-link class="btn-link-large add-btn" to="add">
-  		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加菜单
-  		</router-link>
-		</div>
-		<el-table
-		:data="tableData"
-		style="width: 100%"
-		@selection-change="selectItem">
-			<el-table-column
-			type="selection"
-			:context="_self"
-			width="50">
-			</el-table-column>
-			<el-table-column
-			prop="p_title"
-			label="上级菜单"
-			width="150">
-			</el-table-column>
-			<el-table-column
-			prop="title"
-			label="标题">
-			</el-table-column>
-		<!-- <el-table-column
-		prop="menu_type"
-		label="类型"
-		width="200">
-		</el-table-column> -->
-			<el-table-column
-			inline-template
-			label="状态"
-			width="100">
-				<div>
-					{{ row.status | status}}
-				</div>
-			</el-table-column>
-			<el-table-column
-			label="操作"
-			inline-template
-			width="200">
-				<div>
-					<span>
-						<router-link :to="{ name: 'menuEdit', params: { id: row.id }}" class="btn-link edit-btn">
-						编辑
-						</router-link>
-					</span>
-					<span>
-						<el-button
-						size="small"
-						type="danger"
-						@click="confirmDelete(row)">
-						删除
-						</el-button>
-					</span>
-				</div>
-			</el-table-column>
-		</el-table>
-		<div class="pos-rel p-t-20">
-			<btnGroup :selectedData="multipleSelection" :type="'menus'"></btnGroup>
-		</div>
-	</div>
+    <el-row>
+        <el-row type="flex" justify="end" align="middle" class="el-table-panel">
+            <router-link class="el-button el-button--primary el-button--small" to="add">
+                <i class="el-icon-plus"></i>&nbsp;&nbsp;添加菜单
+            </router-link>
+        </el-row>
+        <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
+            <el-table-column type="selection" :context="_self"></el-table-column>
+            <el-table-column align="center" prop="p_title" label="上级菜单"></el-table-column>
+            <el-table-column align="center" prop="title" label="标题"></el-table-column>
+            <el-table-column align="center" prop="sort" label="排序"></el-table-column>
+            <el-table-column align="center" label="状态">
+                <template slot-scope="scope" align="center">
+                     {{ scope.row.status | status}}
+                </template>
+            </el-table-column>
+            <el-table-column align="center" label="操作">
+                <template slot-scope="scope" align="center">
+                    <span>
+                        <router-link :to="{ name: 'menuEdit', params: { id: scope.row.id }}" class="el-button el-button--primary el-button--small">
+                            编辑
+                        </router-link>
+                    </span>
+                    <el-button type="danger" @click="confirmDelete(row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </el-row>
 </template>
 
 <script>
-  import btnGroup from '../../../Common/btn-group.vue'
   import http from '../../../../assets/js/http'
 
   export default {
@@ -84,13 +49,13 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          _g.openGlobalLoading()
+          this.$global.openGlobalLoading();
           this.apiDelete('admin/menus/delete/', item.id).then((res) => {
-            _g.closeGlobalLoading()
-            this.handelResponse(res, (data) => {
-              _g.toastMsg('success', '删除成功')
+            this.$global.closeGlobalLoading();
+            this.handelResponse(res, () => {
+              this.$global.toastMsg('success', '删除成功');
               setTimeout(() => {
-                _g.shallowRefresh(this.$route.name)
+                this.$global.shallowRefresh(this.$route.name)
               }, 1500)
             })
           })
@@ -106,20 +71,8 @@
         })
       })
     },
-    computed: {
-      addShow() {
-        return _g.getHasRule('menus-save')
-      },
-      editShow() {
-        return _g.getHasRule('menus-update')
-      },
-      deleteShow() {
-        return _g.getHasRule('menus-delete')
-      }
-    },
-    components: {
-      btnGroup
-    },
+    computed: {},
+    components: {},
     mixins: [http]
   }
 </script>

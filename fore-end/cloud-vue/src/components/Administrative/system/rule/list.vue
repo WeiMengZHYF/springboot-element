@@ -1,71 +1,33 @@
 <template>
-	<div>
-		<div class="m-b-20">
-  		<router-link class="btn-link-large add-btn" to="add">
-  		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加节点
-  		</router-link>
-		</div>
-		<el-table
-		:data="tableData"
-		style="width: 100%"
-		@selection-change="selectItem">
-			<el-table-column
-			type="selection"
-			:context="_self"
-			width="50">
-			</el-table-column>
-			<el-table-column
-			prop="p_title"
-			label="节点结构"
-			width="150">
-			</el-table-column>
-			<el-table-column
-			prop="title"
-			label="显示名">
-			</el-table-column>
-  		<el-table-column
-  		prop="name"
-  		label="名称"
-  		width="200">
-  		</el-table-column>
-			<el-table-column
-			inline-template
-			label="状态"
-			width="100">
-				<div>
-					{{ row.status | status}}
-				</div>
-			</el-table-column>
-			<el-table-column
-			label="操作"
-			width="200">
-        <template scope="scope">
-          <div>
-            <span>
-              <router-link :to="{ name: 'ruleEdit', params: { id: scope.row.id }}" class="btn-link edit-btn">
-              编辑
-              </router-link>
-            </span>
-            <span>
-              <el-button
-              size="small"
-              type="danger"
-              @click="confirmDelete(scope.row)">
-              删除
-              </el-button>
-            </span>
-          </div>
-        </template>
-			</el-table-column>
-		</el-table>
-		<div class="pos-rel p-t-20">
-			<btnGroup :selectedData="multipleSelection" :type="'rules'"></btnGroup>
-		</div>
-	</div>
+    <el-row>
+        <el-row type="flex" justify="end" align="middle" class="el-table-panel">
+            <router-link class="el-button el-button--primary el-button--small" to="add">
+                <i class="el-icon-plus"></i>添加节点
+            </router-link>
+        </el-row>
+        <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
+            <el-table-column type="selection" :context="_self"></el-table-column>
+            <el-table-column align="center" prop="p_title" label="节点结构"></el-table-column>
+            <el-table-column align="center" prop="title" label="显示名"></el-table-column>
+            <el-table-column align="center" prop="name" label="名称"></el-table-column>
+            <el-table-column align="center" label="状态">
+                <template slot-scope="scope">
+                    <span>{{ scope.row.status | status}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column :align="center" label="操作">
+                <template slot-scope="scope">
+                    <span>
+                        <router-link class="el-button el-button--primary el-button--small" :to="{ name: 'ruleEdit', params: { id: scope.row.id }}">编辑</router-link>
+                    </span>
+                    <el-button type="danger" @click="confirmDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </el-row>
 </template>
 
 <script>
-  import btnGroup from '../../../Common/btn-group.vue'
   import http from '../../../../assets/js/http'
 
   export default {
@@ -85,18 +47,18 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          _g.openGlobalLoading()
+          this.$global.openGlobalLoading();
           this.apiDelete('admin/rules/delete/', item.id).then((res) => {
-            _g.closeGlobalLoading()
-            this.handelResponse(res, (data) => {
-              _g.toastMsg('success', '删除成功')
+            this.$global.closeGlobalLoading();
+            this.handelResponse(res, () => {
+              this.$global.toastMsg('success', '删除成功');
               setTimeout(() => {
-                _g.shallowRefresh(this.$route.name)
+                this.$global.shallowRefresh(this.$route.name)
               }, 1500)
             })
           })
         }).catch(() => {
-        // handle error
+          this.$message.error("操作失败");
         })
       }
     },
@@ -107,20 +69,8 @@
         })
       })
     },
-    computed: {
-      addShow() {
-        return _g.getHasRule('rules-save')
-      },
-      editShow() {
-        return _g.getHasRule('rules-update')
-      },
-      deleteShow() {
-        return _g.getHasRule('rules-delete')
-      }
-    },
-    components: {
-      btnGroup
-    },
+    computed: {},
+    components: {},
     mixins: [http]
   }
 </script>

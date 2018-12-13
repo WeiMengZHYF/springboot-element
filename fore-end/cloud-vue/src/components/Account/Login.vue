@@ -1,7 +1,6 @@
 <template>
     <div>
-        <el-form :model="form" :rules="rules2" ref="form" label-position="left" label-width="0px"
-                 class="demo-ruleForm card-box loginform">
+        <el-form :model="form" :rules="rules2" ref="form" label-position="left" label-width="0px" class="demo-ruleForm card-box loginForm">
             <h3 class="title">{{systemName}}</h3>
             <el-form-item prop="username">
                 <el-input type="text" v-model="form.username" auto-complete="off" placeholder="账号"></el-input>
@@ -10,15 +9,12 @@
                 <el-input type="password" v-model="form.password" auto-complete="off" placeholder="密码"></el-input>
             </el-form-item>
             <el-form-item v-show="requireVerify" prop="verifyCode">
-                <el-input type="text" v-model="form.verifyCode" auto-complete="off" placeholder="验证码"
-                          class="w-150"></el-input>
+                <el-input type="text" v-model="form.verifyCode" auto-complete="off" placeholder="验证码" class="w-150"></el-input>
                 <img :src="verifyUrl" @click="refreshVerify()" class="verify-pos"/>
             </el-form-item>
             <el-checkbox v-model="checked" style="margin:0px 0px 35px 0px;">记住密码</el-checkbox>
             <el-form-item style="width:100%;">
-                <el-button type="primary" style="width:100%;" v-loading="loading"
-                           @click.native.prevent="handleSubmit2('form')">登录
-                </el-button>
+                <el-button type="primary" style="width:100%;" v-loading="loading"  @click.native.prevent="handleSubmit2('form')">登录 </el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -63,7 +59,7 @@
         }, 300)
       },
       handleSubmit2() {
-        if (this.loading){
+        if (this.loading) {
           return;
         }
         this.$refs.form.validate((valid) => {
@@ -90,10 +86,10 @@
               } else {
                 this.refreshVerify();
                 if (this.checked) {
-                  Cookies.set('rememberPwd', true, { expires: 1 })
+                  this.$cookies.set('rememberPwd', true, { expires: 1 })
                 }
                 this.resetCommonData(res.data);
-                _g.toastMsg('success', '登录成功');
+                this.$global.toastMsg('success', '登录成功');
                 this.$router.push({ path: '/home/menu/list' });
               }
             })
@@ -103,9 +99,9 @@
         })
       },
       checkIsRememberPwd() {
-        if (Cookies.get('rememberPwd')) {
+        if (this.$cookies.get('rememberPwd')) {
           let data = {
-            rememberKey: Lockr.get('rememberKey')
+            rememberKey: this.$storage.get('rememberKey')
           };
           this.apiPost('admin/relogin', data).then((res) => {
             this.handelResponse(res, (data) => {
@@ -149,7 +145,6 @@
 
     .card-box {
         padding: 20px;
-        /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
         -webkit-border-radius: 5px;
         border-radius: 5px;
         -moz-border-radius: 5px;
@@ -167,7 +162,7 @@
         color: #505458;
     }
 
-    .loginform {
+    .loginForm {
         width: 350px;
         padding: 35px 35px 15px 35px;
     }

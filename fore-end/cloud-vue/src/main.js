@@ -2,17 +2,17 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
-import Lockr from 'lockr'
+import storage from 'lockr'
 import Cookies from 'js-cookie'
 import _ from 'lodash'
 import moment from 'moment'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css';
 import routes from './routes'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
 import filter from './assets/js/filter'
-import _g from './assets/js/global'
+import global from './assets/js/global'
 import 'nprogress/nprogress.css'
 import 'assets/css/global.css'
 import 'assets/css/base.css'
@@ -20,16 +20,16 @@ import 'assets/css/base.css'
 axios.defaults.baseURL = HOST;
 axios.defaults.timeout = 1000 * 15;
 axios.defaults.withCredentials = true;
-axios.defaults.headers.authKey = Lockr.get('authKey');
-axios.defaults.headers.sessionId = Lockr.get('sessionId');
+axios.defaults.headers.authKey = storage.get('authKey');
+axios.defaults.headers.sessionId = storage.get('sessionId');
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 axios.interceptors.request.use(
   // 这里的config包含每次请求的内容
   config => {
     if (store.state.authKey) {
-      config.headers.authKey = Lockr.get('authKey');
-      config.headers.sessionId = Lockr.get('sessionId')
+      config.headers.authKey = storage.get('authKey');
+      config.headers.sessionId = storage.get('sessionId')
     }
     return config
   }, error => {
@@ -46,12 +46,11 @@ router.beforeEach((to, from, next) => {
   const hideLeft = to.meta.hideLeft;
   store.dispatch('showLeftMenu', hideLeft);
   store.dispatch('showLoading', true);
-  let authKey = Lockr.get('authKey');
+  let authKey = storage.get('authKey');
   if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
     if (authKey) {
       next();
     } else {
-      console.log('to login- current Path :' + to.fullPath);
       next({
         path: '/login',
         query: { redirect: to.fullPath }  // 将跳转的路由path作为参数，登录成功后跳转到该路由
@@ -69,9 +68,8 @@ axios.interceptors.response.use(
     if (error.response) {
       switch (error.response.status) {
         case 401:
-          Lockr.rm('authKey');
-          Lockr.rm('sessionId');
-          console.info(router.currentRoute.fullPath);
+          storage.rm('authKey');
+          storage.rm('sessionId');
           router.replace({
             path: '/login',
             query: { redirect: router.currentRoute.fullPath }
@@ -81,20 +79,17 @@ axios.interceptors.response.use(
     return Promise.reject(error.response.data)
   });
 
-Vue.use(ElementUI);
 Vue.use(VueRouter);
-
-window.router = router;
+Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
 window.store = store;
 window.HOST = HOST;
-window.axios = axios;
 window._ = _;
 window.moment = moment;
-window.Lockr = Lockr;
-window.Cookies = Cookies;
-window._g = _g;
 window.pageSize = 15;
 
+Vue.prototype.$cookies = Cookies;
+Vue.prototype.$global = global;
+Vue.prototype.$storage = storage;
 const bus = new Vue();
 window.bus = bus;
 
