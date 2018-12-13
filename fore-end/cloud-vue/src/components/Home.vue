@@ -2,7 +2,7 @@
     <el-row class="panel m-w-1280">
         <el-col :span="24" class="panel-top">
             <el-col :span="4">
-                <template v-if="logo_type == '1'">
+                <template v-if="logo_type === '1'">
                     <img :src="img" class="logo">
                 </template>
                 <template v-else>
@@ -17,7 +17,7 @@
             <el-col :span="4" class="pos-rel">
                 <el-dropdown @command="handleMenu" class="user-menu">
 		      <span class="el-dropdown-link c-gra" style="cursor: default">
-		        {{username}}&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>
+		        {{username}}&nbsp;&nbsp<i class="fa fa-user" aria-hidden="true"></i>
 		      </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item command="changePwd">修改密码</el-dropdown-item>
@@ -27,7 +27,6 @@
             </el-col>
         </el-col>
         <el-col :span="24" class="panel-center">
-            <!--<el-col :span="4">-->
             <aside class="w-180 ovf-hd" v-show="!showLeftMenu">
                 <leftMenu :menuData="menuData" :menu="menu" ref="leftMenu"></leftMenu>
             </aside>
@@ -47,16 +46,6 @@
     </el-row>
 </template>
 <style>
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity .5s
-    }
-
-    .fade-enter,
-    .fade-leave-active {
-        opacity: 0
-    }
-
     .panel {
         position: absolute;
         top: 0px;
@@ -109,15 +98,6 @@
         margin-right: 20px;
         padding-top: 5px;
         cursor: pointer;
-    }
-
-    .admin {
-        color: #c0ccda;
-        text-align: center;
-    }
-
-    .hide-leftMenu {
-        left: 0px;
     }
 </style>
 <script>
