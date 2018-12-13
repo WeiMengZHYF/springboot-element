@@ -1,6 +1,6 @@
 <template>
-    <el-row class="panel m-w-1280">
-        <el-col :span="24" class="panel-top">
+    <el-container>
+        <el-header>
             <el-col :span="4">
                 <template v-if="logo_type === '1'">
                     <img :src="img" class="logo">
@@ -14,90 +14,36 @@
                      @click="switchTopMenu(menu)">{{menu.title}}
                 </div>
             </el-col>
-            <el-col :span="4" class="pos-rel">
+            <el-col :span="4">
                 <el-dropdown @command="handleMenu" class="user-menu">
-		      <span class="el-dropdown-link c-gra" style="cursor: default">
-		        {{username}}&nbsp;&nbsp<i class="fa fa-user" aria-hidden="true"></i>
-		      </span>
+                    <span style="cursor: default;color: #ffff" >
+                        {{username}}&nbsp;&nbsp<i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item command="changePwd">修改密码</el-dropdown-item>
                         <el-dropdown-item command="logout">退出</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </el-col>
-        </el-col>
-        <el-col :span="24" class="panel-center">
-            <aside class="w-180 ovf-hd" v-show="!showLeftMenu">
+        </el-header>
+        <el-container>
+            <el-aside width="220px" v-bind:style="asideStyle">
                 <leftMenu :menuData="menuData" :menu="menu" ref="leftMenu"></leftMenu>
-            </aside>
-            <section class="panel-c-c" :class="{'hide-leftMenu': hasChildMenu}">
-                <div class="grid-content bg-purple-light">
-                    <el-col :span="24">
-                        <transition name="fade" mode="out-in" appear>
-                            <router-view v-loading="showLoading"></router-view>
-                        </transition>
-                    </el-col>
-                </div>
-            </section>
-        </el-col>
-
+            </el-aside>
+            <el-main>
+                <transition name="fade" mode="out-in" appear>
+                    <router-view v-loading="showLoading"></router-view>
+                </transition>
+            </el-main>
+        </el-container>
         <changePwd ref="changePwd"></changePwd>
-
-    </el-row>
+    </el-container>
 </template>
 <style>
-    .panel {
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        width: 100%;
-    }
-
-    .panel-top {
-        height: 60px;
-        line-height: 60px;
-        background: #1F2D3D;
-        color: #c0ccda;
-    }
-
-    .panel-center {
-        background: #324057;
-        position: absolute;
-        top: 60px;
-        bottom: 0px;
-        overflow: hidden;
-    }
-
-    .panel-c-c {
-        background: #f1f2f7;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        bottom: 0px;
-        left: 180px;
-        overflow-y: scroll;
-        padding: 20px;
-    }
-
-    .logout {
-        background: url(../assets/images/logout_36.png);
-        background-size: contain;
-        width: 20px;
-        height: 20px;
-        float: left;
-    }
-
     .logo {
         width: 150px;
         float: left;
         margin: 10px 10px 10px 18px;
-    }
-
-    .tip-logout {
-        float: right;
-        margin-right: 20px;
-        padding-top: 5px;
-        cursor: pointer;
     }
 </style>
 <script>
@@ -117,7 +63,10 @@
         module: null,
         img: '',
         title: '',
-        logo_type: null
+        logo_type: null,
+        asideStyle: {
+          minHeight: 1000 + "px"
+        }
       }
     },
     methods: {
@@ -181,10 +130,22 @@
         })
       },
       getUsername() {
-        this.username = this.$storage.get('userInfo').username
+        this.username = '管理员'
+        //this.username = this.$storage.get('userInfo').username
       }
     },
     created() {
+
+      let height = document.body.offsetHeight - 60 + "px";
+      this.asideStyle.minHeight = height;
+      const that = this;
+      window.onresize = () => {
+        return (() => {
+          let screenWidth = document.body.offsetHeight;
+          that.asideStyle.minHeight = screenWidth - 60 + "px";
+        })();
+      };
+
       this.getTitleAndLogo();
       let authKey = this.$storage.get('authKey');
       let sessionId = this.$storage.get('sessionId');

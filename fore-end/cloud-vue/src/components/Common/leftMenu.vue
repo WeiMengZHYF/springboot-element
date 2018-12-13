@@ -1,5 +1,5 @@
 <template>
-    <el-menu :default-active="$route.path" background-color="#324057" active-text-color="#ffd04b"
+    <el-menu :default-active="$route.path" background-color="#001529" active-text-color="#ffd04b"
                 :router=true  :unique-opened=true>
         <el-submenu v-for="(item,index) in menuData" :key="index" :index="item.title" v-if="item.url ===''">
             <template slot="title">
