@@ -2,7 +2,6 @@ package cloud.simple.service.web;
 
 import java.util.Arrays;
 import java.util.Map;
-
 import cloud.simple.service.util.RestResult;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -71,7 +70,9 @@ public class SysAdminUsersController extends CommonController {
     @PostMapping(value = "update")
     public RestResult<Object> update(@RequestBody SysAdminUser record) {
 
-        record.setPassword(DigestUtils.md5Hex(record.getPassword()));
+        if(StringUtils.isNotBlank(record.getPassword())){
+            record.setPassword(DigestUtils.md5Hex(record.getPassword()));
+        }
         sysAdminUserService.updateByPrimaryKeySelective(record);
         return RestResult.success();
     }

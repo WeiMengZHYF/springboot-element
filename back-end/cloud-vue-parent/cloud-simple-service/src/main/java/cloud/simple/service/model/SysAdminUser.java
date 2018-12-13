@@ -2,6 +2,7 @@ package cloud.simple.service.model;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import cloud.simple.service.base.BaseEntity;
 
@@ -42,6 +43,12 @@ public class SysAdminUser  extends BaseEntity {
      */
     @Column(name = "`structure_id`")
     private Integer structureId;
+
+    /**
+     * 部门名称
+     */
+    @Transient
+    private String structureName;
 
     /**
      * 岗位
@@ -158,6 +165,15 @@ public class SysAdminUser  extends BaseEntity {
      */
     public void setStructureId(Integer structureId) {
         this.structureId = structureId;
+    }
+
+    public String getStructureName() {
+        return structureName;
+    }
+
+    public SysAdminUser setStructureName(String structureName) {
+        this.structureName = structureName;
+        return this;
     }
 
     /**
