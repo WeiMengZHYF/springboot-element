@@ -81,10 +81,13 @@ public class SysAdminUsersController extends CommonController {
      * 删除
      */
     @ApiOperation(value = "删除")
-    @DeleteMapping(value = "delete/{id}")
-    public RestResult<Object> delete(@PathVariable("id") Integer id) {
+    @PostMapping(value = "delete")
+    public RestResult<Object> delete(@RequestBody SysAdminUser record) {
 
-        sysAdminUserService.deleteByPrimaryKey(id);
+        if(record.getId() == null){
+            return RestResult.parameter(record,"id不可为空");
+        }
+        sysAdminUserService.deleteByPrimaryKey(record.getId());
         return RestResult.success();
     }
 
