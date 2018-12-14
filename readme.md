@@ -6,6 +6,7 @@
 * 使用Maven对项目进行模块化管理，提高项目的易开发性、扩展性。
 * 系统包括分布式配置、eureka注册中心、服务中心、zipkin分布式跟踪等。
 * 每个模块服务多系统部署，注册到同一个eureka集群服务注册中心，实现集群部署。
+* 分支2.0.0 更新springboot 2.1.1 springcloud Finchley.RELEASE 版本 element-ui版本 2.4.11
 
 ## 主要功能
 * 登录、退出登录
