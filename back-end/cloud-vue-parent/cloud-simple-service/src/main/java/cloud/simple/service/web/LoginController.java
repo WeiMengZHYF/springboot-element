@@ -33,7 +33,6 @@ import cloud.simple.service.domain.SysAdminUserService;
 import cloud.simple.service.model.SysAdminRule;
 import cloud.simple.service.model.SysAdminUser;
 import cloud.simple.service.util.EncryptUtil;
-import cloud.simple.service.util.FastJsonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -72,19 +71,19 @@ public class LoginController extends CommonController {
     @ApiOperation(value = "登录", notes = "登录")
     @ApiImplicitParams({@ApiImplicitParam(name = "record", required = true, dataType = "SysAdminUser")})
     @PostMapping(value = "/login")
-    public String login(@RequestBody SysAdminUser record, HttpServletRequest request) {
+    public RestResult<Map<String, Object>> login(@RequestBody SysAdminUser record, HttpServletRequest request) {
 
         Map<String, Object> data = new HashMap<>();
         if (StringUtils.isBlank(record.getUsername())) {
-            return FastJsonUtils.resultError(-100, "账号不能为空", null);
+            return RestResult.parameter(data,"账号不能为空");
         }
         record.setPassword(DigestUtils.md5Hex(record.getPassword()));
         SysAdminUser adminUser = sysAdminUserService.selectOne(record);
         if (adminUser == null) {
-            return FastJsonUtils.resultError(-100, "帐号与密码错误不正确", null);
+            return RestResult.fail(data, "帐号与密码错误不正确");
         }
         if (!adminUser.getStatus().equals(Byte.valueOf("1"))) {
-            return FastJsonUtils.resultError(-100, "帐号已被禁用", null);
+            return RestResult.fail(data,"帐号已被禁用");
         }
         String authKey = EncryptUtil.encryptBase64(adminUser.getUsername() + "|" + adminUser.getPassword(), Constant.SECRET_KEY);
         // 返回信息
@@ -97,7 +96,7 @@ public class LoginController extends CommonController {
         data.put("rulesList", rulesList);
         data.put("menusList", sysAdminMenuService.getTreeMenuByUserId(adminUser.getId()));
 
-        return FastJsonUtils.resultSuccess(200, "登录成功", data);
+        return RestResult.success(data);
     }
 
 
