@@ -10,13 +10,13 @@
                 </template>
             </el-col>
             <el-col :span="16" class="ofv-hd">
-                <div class="fl p-l-20 p-r-20 top-menu" :class="{'top-active': menu.selected}" v-for="menu in topMenu"
-                     @click="switchTopMenu(menu)">{{menu.title}}
+                <div class="fl p-l-20 p-r-20 top-menu" :class="{'top-active': menu.selected}" v-for="menu in topMenu" @click="switchTopMenu(menu)">
+                    {{menu.title}}
                 </div>
             </el-col>
             <el-col :span="4">
                 <el-dropdown @command="handleMenu" class="user-menu">
-                    <span style="cursor: default;color: #ffff" >
+                    <span style="cursor: default;color: #ffff">
                         {{username}}&nbsp;&nbsp<i class="fa fa-user" aria-hidden="true"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
@@ -27,8 +27,8 @@
             </el-col>
         </el-header>
         <el-container>
-            <el-aside width="220px" v-bind:style="asideStyle">
-                <leftMenu :menuData="menuData" :menu="menu" ref="leftMenu"></leftMenu>
+            <el-aside v-bind:style="asideStyle">
+                <leftMenu :menuData="menuData" :menu="menu" ref="leftMenu"/>
             </el-aside>
             <el-main>
                 <transition name="fade" mode="out-in" appear>
@@ -65,6 +65,7 @@
         title: '',
         logo_type: null,
         asideStyle: {
+          width:'220px',
           minHeight: 1000 + "px"
         }
       }
@@ -92,7 +93,7 @@
               this.$message.success('退出成功');
               setTimeout(() => {
                 this.$router.replace('/')
-              }, 1500)
+              }, 1000)
             })
           })
         }).catch(() => {
@@ -135,13 +136,11 @@
     },
     created() {
 
-      let height = document.body.offsetHeight - 60 + "px";
-      this.asideStyle.minHeight = height;
+      this.asideStyle.minHeight = document.body.offsetHeight - 60 + "px";
       const that = this;
       window.onresize = () => {
         return (() => {
-          let screenWidth = document.body.offsetHeight;
-          that.asideStyle.minHeight = screenWidth - 60 + "px";
+          that.asideStyle.minHeight = document.body.offsetHeight - 60 + "px";
         })();
       };
 
@@ -158,12 +157,12 @@
       this.menu = this.$route.meta.menu;
       this.module = this.$route.meta.module;
       this.topMenu = menus;
-      _(menus).forEach((res) => {
-        if (res.module === this.module) {
-          this.menuData = res.child;
-          res.selected = true
+      _(menus).forEach(entity => {
+        if (entity.module === this.module) {
+          this.menuData = entity.child;
+          entity.selected = true
         } else {
-          res.selected = false
+          entity.selected = false
         }
       })
     },
@@ -179,15 +178,15 @@
     },
     watch: {
       '$route'(to, from) {
-        _(this.topMenu).forEach((res) => {
-          if (res.module === to.meta.module) {
-            res.selected = true;
+        _(this.topMenu).forEach(entity => {
+          if (entity.module === to.meta.module) {
+            entity.selected = true;
             if (!to.meta.hideLeft) {
               this.menu = to.meta.menu;
-              this.menuData = res.child
+              this.menuData = entity.child
             }
           } else {
-            res.selected = false
+            entity.selected = false
           }
         })
       }
