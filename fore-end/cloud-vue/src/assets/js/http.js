@@ -93,14 +93,6 @@ const apiMethods = {
       } else {
         routerUrl = data.menusList[0].child[0].child[0].url
       }
-      setTimeout(() => {
-        let path = this.$route.path;
-        if (routerUrl !== path) {
-          this.$router.replace(routerUrl)
-        } else {
-          this.$router.history.go(-1);
-        }
-      }, 1000)
     },
     reAjax(url, data) {
       return new Promise((resolve, reject) => {
