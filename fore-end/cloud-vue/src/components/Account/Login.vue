@@ -80,7 +80,7 @@
               data.isRemember = 0
             }
             this.apiPost('admin/login', data).then((res) => {
-              if (res.code !== 200) {
+              if (!res.code) {
                 this.loading = !this.loading;
                 this.handleError(res)
               } else {

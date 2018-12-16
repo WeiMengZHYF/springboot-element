@@ -130,8 +130,7 @@
         })
       },
       getUsername() {
-        this.username = '管理员'
-        //this.username = this.$storage.get('userInfo').username
+        this.username = this.$storage.get('userInfo').username
       }
     },
     created() {
@@ -169,9 +168,6 @@
       })
     },
     computed: {
-      routerShow() {
-        return store.state.routerShow
-      },
       showLeftMenu() {
         this.hasChildMenu = store.state.showLeftMenu;
         return store.state.showLeftMenu
