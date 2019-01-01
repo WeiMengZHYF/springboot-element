@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
@@ -26,7 +27,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
     @Override
     public T selectOne(T record) {
 
-        return Optional.ofNullable(this.select(record)).map(list ->list.get(0)).orElse(null);
+        return Optional.ofNullable(this.select(record)).map(list -> list.get(0)).orElse(null);
     }
 
     /**
@@ -49,13 +50,16 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return List 列表
      */
     public List<T> select(T record, String orderSqlStr) {
+
         Example example = new Example(record.getClass(), false);
         Criteria criteria = example.createCriteria();
         Map<String, String> map;
         try {
             map = BeanUtils.describe(record);
             for (Entry<String, String> entry : map.entrySet()) {
-                if (entry.getValue() == null || "".equals(entry.getValue())) continue;
+                if (StringUtils.isEmpty(entry.getValue())){
+                    continue;
+                }
                 criteria.andEqualTo(entry.getKey(), entry.getValue());
             }
             example.setOrderByClause(orderSqlStr);
@@ -96,7 +100,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int insert(T record) {
         return this.mapper.insert(record);
     }
@@ -110,7 +114,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int insertSelective(T record) {
         return this.mapper.insertSelective(record);
     }
@@ -122,7 +126,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int delete(T key) {
         return this.mapper.delete(key);
     }
@@ -134,13 +138,13 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int deleteByPrimaryKey(Object key) {
         return this.mapper.deleteByPrimaryKey(key);
     }
 
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public void deleteByPrimaryKeys(List<Object> ids) {
 
         if (CollectionUtils.isNotEmpty(ids)) {
@@ -155,7 +159,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int updateByPrimaryKey(T record) {
         return this.mapper.updateByPrimaryKey(record);
     }
@@ -167,7 +171,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int updateByPrimaryKeySelective(T record) {
         return this.mapper.updateByPrimaryKeySelective(record);
     }
@@ -180,15 +184,14 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
      * @return int 影响行数
      */
     @Override
-    @Transactional(rollbackFor =  Exception.class)
-    public int save(T record) {
-        int count = 0;
+    @Transactional(rollbackFor = Exception.class)
+    public int saveOrUpdate(T record) {
+
         if (record.getId() == null) {
-            count = this.insertSelective(record);
+            return this.insertSelective(record);
         } else {
-            count = this.updateByPrimaryKeySelective(record);
+            return this.updateByPrimaryKeySelective(record);
         }
-        return count;
     }
 
     /**

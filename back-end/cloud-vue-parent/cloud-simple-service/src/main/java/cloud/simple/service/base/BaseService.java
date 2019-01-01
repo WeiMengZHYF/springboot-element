@@ -96,7 +96,7 @@ public interface BaseService<T extends BaseEntity> {
     * @param record 对象
     * @return int 影响行数
      */
-    int save(T record);
+    int saveOrUpdate(T record);
     
     /**
    	 *(单表分页可排序) 
