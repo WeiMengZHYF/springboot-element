@@ -61,7 +61,7 @@ public class SysAdminMenusController extends CommonController {
     @PostMapping(value = "save")
     public RestResult<String> save(@RequestBody SysAdminMenu record) {
 
-        sysAdminMenuService.save(record);
+        sysAdminMenuService.saveOrUpdate(record);
         return RestResult.success();
     }
 

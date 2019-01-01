@@ -11,7 +11,8 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
+		<project.encoding>UTF-8</project.encoding>
 		<docker.plugin.version>0.3.258</docker.plugin.version>
         <druid.version>1.0.18</druid.version>
 	</properties>
@@ -95,6 +96,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${project.encoding}</encoding>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -58,7 +58,7 @@ public class SysAdminStructuresController extends CommonController {
     @PostMapping(value = "save")
     public RestResult<Object> save(@RequestBody SysAdminStructure record) {
 
-        sysAdminStructureService.save(record);
+        sysAdminStructureService.saveOrUpdate(record);
         return RestResult.success();
     }
 

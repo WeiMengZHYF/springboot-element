@@ -62,7 +62,7 @@ public class SysAdminGroupsController extends CommonController {
         if (record.getPid() == null) {
             record.setPid(0);
         }
-        sysAdminGroupService.save(record);
+        sysAdminGroupService.saveOrUpdate(record);
         return RestResult.success();
     }
 

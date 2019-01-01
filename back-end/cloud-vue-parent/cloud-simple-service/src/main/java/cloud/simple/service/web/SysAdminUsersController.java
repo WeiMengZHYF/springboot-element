@@ -57,7 +57,7 @@ public class SysAdminUsersController extends CommonController {
     @PostMapping(value = "save")
     public RestResult<Object> save(@RequestBody SysAdminUser record) {
 
-        sysAdminUserService.save(record);
+        sysAdminUserService.saveOrUpdate(record);
         return RestResult.success();
     }
 

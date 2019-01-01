@@ -58,7 +58,7 @@ public class SysAdminRulesController extends CommonController {
     @PostMapping(value = "save")
     public RestResult<String> save(@RequestBody SysAdminRule record) {
 
-        sysAdminRulesService.save(record);
+        sysAdminRulesService.saveOrUpdate(record);
         return RestResult.success();
     }
 
