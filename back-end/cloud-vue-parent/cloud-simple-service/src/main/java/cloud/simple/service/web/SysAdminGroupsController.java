@@ -57,7 +57,7 @@ public class SysAdminGroupsController extends CommonController {
      */
     @ApiOperation(value = "保存", httpMethod = "POST")
     @PostMapping(value = "save")
-    public RestResult<Object> save(@RequestBody(required = false) SysAdminGroup record) {
+    public RestResult<Object> save(@RequestBody SysAdminGroup record) {
 
         if (record.getPid() == null) {
             record.setPid(0);
@@ -103,22 +103,6 @@ public class SysAdminGroupsController extends CommonController {
         String ids = MapUtils.getString(params, "ids");
         String[] list = ids.split(",");
         sysAdminGroupService.deleteByPrimaryKey(Arrays.asList(list));
-        return RestResult.success();
-    }
-
-    /**
-     * 启用或禁用
-     */
-    @ApiOperation(value = "根据ids批量启用或禁用")
-    @PostMapping(value = "enables")
-    public RestResult<Object> enables(@RequestBody Map<String, Object> params) {
-
-        if (params.get("ids") == null || params.get("status") == null) {
-            return RestResult.parameter(params, "ids不可为空");
-        }
-        byte status = MapUtils.getByteValue(params, "status");
-        String ids = MapUtils.getString(params, "ids");
-        this.sysAdminGroupService.enables(ids.split(","), status);
         return RestResult.success();
     }
 }
