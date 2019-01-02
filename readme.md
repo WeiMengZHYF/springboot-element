@@ -2,7 +2,7 @@
 ---
 
 ## 项目简介
-* v2.0.0 版本一升级为springboot 2.0 element-ui 升级到最新版本
+* v2.0.0 版本已升级为springboot 2.0 element-ui 升级到最新版本
 * cloud-vue是一套基于springcloud + mybatis + vue全家桶（Vue2.x + Vue-router2.x + Vuex）的前后端分离框架.
 * 使用Maven对项目进行模块化管理，提高项目的易开发性、扩展性。
 * 系统包括分布式配置、eureka注册中心、服务中心、zipkin分布式跟踪等。
