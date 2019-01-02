@@ -47,8 +47,8 @@
           ids: this.getSelectedIds(),
           status: cate
         };
-        this.apiPost(url, data).then((res) => {
-          this.handelResponse(res, () => {
+        this.$http.apiPost(url, data).then((res) => {
+          this.$http.handelResponse(res, () => {
             this.$message.success( word + '成功');
             this.$router.history.go(-1);
           }, () => {
@@ -70,8 +70,8 @@
         let data = {
           ids: this.getSelectedIds()
         };
-        this.apiPost(url, data).then((res) => {
-          this.handelResponse(res, () => {
+        this.$http.apiPost(url, data).then((res) => {
+          this.$http.handelResponse(res, () => {
             this.$message.success( res.msg);
             this.$router.history.go(-1);
           }, () => {

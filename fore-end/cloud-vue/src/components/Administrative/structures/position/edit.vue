@@ -40,8 +40,8 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/posts/update', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/posts/update', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('编辑成功');
                 this.$router.history.go(-1);
               }, () => {
@@ -53,8 +53,8 @@
       },
       getPosInfo() {
         this.form.id = this.$route.params.id;
-        this.apiGet('admin/posts/edit/' + this.form.id).then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/posts/edit/' + this.form.id).then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.form.name = data.name;
             this.form.remark = data.remark
           })

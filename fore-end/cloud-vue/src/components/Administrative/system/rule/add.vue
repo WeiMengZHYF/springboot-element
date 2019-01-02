@@ -28,7 +28,6 @@
 </template>
 
 <script>
-  import http from '../../../../assets/js/http'
   import fomrMixin from '../../../../assets/js/form_com'
 
   export default {
@@ -63,8 +62,8 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/rules/save', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/rules/save', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('添加成功');
                 setTimeout(() => {
                   this.$router.history.go(-1);
@@ -77,9 +76,9 @@
         })
       },
       getRules() {
-        this.apiGet('admin/rules').then((res) => {
-          this.handelResponse(res, (data) => {
-            _(data).forEach((ret) => {
+        this.$http.apiPost('admin/rules').then((res) => {
+          this.$http.handelResponse(res, (data) => {
+            _(data.list).forEach((ret) => {
               if (ret.level !== 3) {
                 this.options.push(ret)
               }
@@ -91,6 +90,6 @@
     created() {
       this.getRules();
     },
-    mixins: [http, fomrMixin]
+    mixins: [fomrMixin]
   }
 </script>

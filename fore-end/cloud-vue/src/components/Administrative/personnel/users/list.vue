@@ -41,8 +41,6 @@
 </template>
 
 <script>
-  import http from '../../../../assets/js/http'
-
   export default {
     data() {
       return {
@@ -68,9 +66,9 @@
           type: 'warning'
         }).then(() => {
           this.$global.openGlobalLoading();
-          this.apiPost('admin/users/delete', item).then((res) => {
+          this.$http.apiPost('admin/users/delete', item).then((res) => {
             this.$global.closeGlobalLoading();
-            this.handelResponse(res, () => {
+            this.$http.handelResponse(res, () => {
               this.$message.success('删除成功');
               this.$router.history.go(-1);
             })
@@ -88,8 +86,8 @@
             rows: this.limit
           }
         };
-        this.apiPost('admin/users', data).then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiPost('admin/users', data).then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.tableData = data.list;
             this.dataCount = data.total
           })
@@ -132,7 +130,6 @@
       }
     },
     components: {
-    },
-    mixins: [http]
+    }
   }
 </script>

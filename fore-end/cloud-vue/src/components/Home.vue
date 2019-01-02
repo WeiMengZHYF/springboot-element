@@ -10,7 +10,8 @@
                 </template>
             </el-col>
             <el-col :span="16" class="ofv-hd">
-                <div class="fl p-l-20 p-r-20 top-menu" :class="{'top-active': menu.selected}" v-for="menu in topMenu" @click="switchTopMenu(menu)">
+                <div class="fl p-l-20 p-r-20 top-menu" :class="{'top-active': menu.selected}" v-for="menu in topMenu"
+                     @click="switchTopMenu(menu)">
                     {{menu.title}}
                 </div>
             </el-col>
@@ -65,7 +66,7 @@
         title: '',
         logo_type: null,
         asideStyle: {
-          width:'220px',
+          width: '220px',
           minHeight: 1000 + "px"
         }
       }
@@ -80,9 +81,9 @@
           let data = {
             sessionId: this.$storage.get('sessionId')
           };
-          this.apiPost('admin/logout', data).then((res) => {
+          this.$http.apiPost('admin/logout', data).then((res) => {
             this.$global.closeGlobalLoading();
-            this.handelResponse(res, () => {
+            this.$http.handelResponse(res, () => {
               this.$storage.rm('menus');
               this.$storage.rm('authKey');
               this.$storage.rm('rememberKey');
@@ -91,9 +92,7 @@
               this.$storage.rm('sessionId');
               this.$cookies.remove('rememberPwd');
               this.$message.success('退出成功');
-              setTimeout(() => {
-                this.$router.replace('/')
-              }, 1000)
+              this.$router.replace('/');
             })
           })
         }).catch(() => {
@@ -121,8 +120,8 @@
         this.$refs.changePwd.open()
       },
       getTitleAndLogo() {
-        this.apiPost('admin/configs').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiPost('admin/configs').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             document.title = data.SYSTEM_NAME;
             this.logo_type = data.LOGO_TYPE;
             this.title = data.SYSTEM_NAME;
@@ -190,7 +189,6 @@
           }
         })
       }
-    },
-    mixins: [http]
+    }
   }
 </script>

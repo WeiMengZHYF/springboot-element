@@ -21,8 +21,6 @@
 </template>
 
 <script>
-  import http from '../../assets/js/http'
-
   export default {
     data() {
       return {
@@ -79,7 +77,7 @@
             } else {
               data.isRemember = 0
             }
-            this.apiPost('admin/login', data).then((res) => {
+            this.$http.apiPost('admin/login', data).then((res) => {
               if (!res.code) {
                 this.loading = !this.loading;
                 this.handleError(res)
@@ -103,8 +101,8 @@
           let data = {
             rememberKey: this.$storage.get('rememberKey')
           };
-          this.apiPost('admin/relogin', data).then((res) => {
-            this.handelResponse(res, (data) => {
+          this.$http.apiPost('admin/relogin', data).then((res) => {
+            this.$http.handelResponse(res, (data) => {
               this.resetCommonData(data)
             })
           })
@@ -113,8 +111,8 @@
     },
     created() {
       this.checkIsRememberPwd();
-      this.apiPost('admin/configs').then((res) => {
-        this.handelResponse(res, (data) => {
+      this.$http.apiPost('admin/configs').then((res) => {
+        this.$http.handelResponse(res, (data) => {
           document.title = data.SYSTEM_NAME;
           this.systemName = data.SYSTEM_NAME;
           if (parseInt(data.IDENTIFYING_CODE)) {
@@ -131,8 +129,7 @@
           this.handleSubmit2('form')
         }
       })
-    },
-    mixins: [http]
+    }
   }
 </script>
 

@@ -75,8 +75,8 @@
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/systemConfigs', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/systemConfigs', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('提交成功');
                 this.isLoading = !this.isLoading
               }, () => {
@@ -113,8 +113,8 @@
     },
     created() {
       this.uploadUrl = window.HOST + '/upload/image';
-      this.apiPost('admin/configs').then((res) => {
-        this.handelResponse(res, (data) => {
+      this.$http.apiPost('admin/configs').then((res) => {
+        this.$http.handelResponse(res, (data) => {
           this.form.SYSTEM_NAME = data.SYSTEM_NAME;
           this.form.IDENTIFYING_CODE = data.IDENTIFYING_CODE;
           this.form.LOGIN_SESSION_VALID = data.LOGIN_SESSION_VALID;

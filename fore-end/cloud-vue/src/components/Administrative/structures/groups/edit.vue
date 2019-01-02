@@ -59,8 +59,8 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/groups/update', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/groups/update', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('编辑成功');
                 this.$router.history.go(-1);
               }, () => {
@@ -72,16 +72,16 @@
       },
       getRules() {
         return new Promise((resolve, reject) => {
-          this.apiGet('admin/rules?type=tree').then((res) => {
-            this.handelResponse(res, (data) => {
+          this.$http.apiGet('admin/rules?type=tree').then((res) => {
+            this.$http.handelResponse(res, (data) => {
               resolve(data)
             })
           })
         })
       },
       getGroups() {
-        this.apiGet('admin/groups').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/groups').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             _(data).forEach((ret) => {
               ret.id = ret.id.toString()
             });
@@ -93,8 +93,8 @@
         this.form.id = this.$route.params.id;
         let arr = await this.getRules();
         this.nodes = this.nodes.concat(arr);
-        this.apiGet('admin/groups/edit/' + this.form.id).then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/groups/edit/' + this.form.id).then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.form.title = data.title;
             this.form.pid = data.pid ? data.pid.toString() : '';
             this.form.remark = data.remark;

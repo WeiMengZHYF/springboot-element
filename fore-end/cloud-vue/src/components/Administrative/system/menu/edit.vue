@@ -90,8 +90,8 @@
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/menus/update/', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/menus/update/', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('编辑成功');
                 setTimeout(() => {
                   this.$router.history.go(-1);
@@ -107,10 +107,10 @@
         this.$refs.ruleList.open()
       },
       getMenus() {
-        this.apiPost('admin/menus').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiPost('admin/menus').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             let array = [];
-            _(data).forEach((res) => {
+            _(data.list).forEach((res) => {
               if (res.level !== 3 && res.menuType === 1) {
                 array.push(res)
               }
@@ -123,8 +123,8 @@
     created() {
       this.getMenus();
       this.id = this.$route.params.id;
-      this.apiGet('admin/menus/edit/' + this.id).then((res) => {
-        this.handelResponse(res, (data) => {
+      this.$http.apiGet('admin/menus/edit/' + this.id).then((res) => {
+        this.$http.handelResponse(res, (data) => {
           data.menuType = data.menuType.toString();
           this.form = data
         })

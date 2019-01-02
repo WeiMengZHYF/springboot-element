@@ -51,9 +51,9 @@
         this.closeDialog()
       },
       getRules() {
-        this.apiGet('admin/rules').then((res) => {
-          this.handelResponse(res, (data) => {
-            this.tableDataShow = _(data).forEach((ret) => {
+        this.$http.apiPost('admin/rules').then((res) => {
+          this.$http.handelResponse(res, (data) => {
+            this.tableDataShow = _(data.list).forEach((ret) => {
               ret.showInput = false
             });
             this.tableData = this.tableDataShow
@@ -64,7 +64,7 @@
     created() {
       let data = store.state.rules;
       if (data && data.length) {
-        this.tableDataShow = _(data).forEach((res) => {
+        this.tableDataShow = _(data.list).forEach((res) => {
           res.showInput = false
         });
         this.tableData = this.tableDataShow

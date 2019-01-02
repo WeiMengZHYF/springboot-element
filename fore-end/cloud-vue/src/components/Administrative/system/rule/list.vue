@@ -36,8 +36,6 @@
 </template>
 
 <script>
-  import http from '../../../../assets/js/http'
-
   export default {
     data() {
       return {
@@ -67,9 +65,9 @@
           type: 'warning'
         }).then(() => {
           this.$global.openGlobalLoading();
-          this.apiDelete('admin/rules/delete/', item.id).then((res) => {
+          this.$http.apiDelete('admin/rules/delete/', item.id).then((res) => {
             this.$global.closeGlobalLoading();
-            this.handelResponse(res, () => {
+            this.$http.handelResponse(res, () => {
               this.$message.success('删除成功');
               this.$router.history.go(-1);
             })
@@ -79,8 +77,8 @@
         })
       },
       list() {
-        this.apiPost('admin/rules', { rows: this.pageSize, page: this.currentPage }).then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiPost('admin/rules', { rows: this.pageSize, page: this.currentPage }).then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.tableData = data.list;
             this.total = data.total;
           })
@@ -91,7 +89,6 @@
       this.list();
     },
     computed: {},
-    components: {},
-    mixins: [http]
+    components: {}
   }
 </script>

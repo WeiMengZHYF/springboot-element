@@ -50,9 +50,9 @@
           type: 'warning'
         }).then(() => {
           this.$global.openGlobalLoading();
-          this.apiDelete('admin/groups/delete/', item.id).then((res) => {
+          this.$http.apiDelete('admin/groups/delete/', item.id).then((res) => {
             this.$global.closeGlobalLoading();
-            this.handelResponse(res, () => {
+            this.$http.handelResponse(res, () => {
               this.$message.success('删除成功');
               this.$router.history.go(-1);
             })
@@ -60,8 +60,8 @@
         }).catch(() => this.$message.error('删除失败'))
       },
       getgroups() {
-        this.apiGet('admin/groups').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/groups').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.tableData = data
           })
         })

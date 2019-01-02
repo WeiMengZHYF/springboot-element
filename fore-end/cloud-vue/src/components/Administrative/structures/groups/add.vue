@@ -24,7 +24,6 @@
     </el-row>
 </template>
 <script>
-  import http from '../../../../assets/js/http'
   import fomrMixin from '../../../../assets/js/form_com'
 
   export default {
@@ -57,8 +56,8 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/groups/save', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/groups/save', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('添加成功');
                 this.$router.history.go(-1);
               }, () => {
@@ -69,15 +68,15 @@
         })
       },
       getRules() {
-        this.apiGet('admin/rules?type=tree').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/rules?type=tree').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.nodes = this.nodes.concat(data)
           })
         })
       },
       getGroups() {
-        this.apiGet('admin/groups').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/groups').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.options = this.options.concat(data)
           })
         })
@@ -87,6 +86,6 @@
       this.getRules();
       this.getGroups()
     },
-    mixins: [http, fomrMixin]
+    mixins: [fomrMixin]
   }
 </script>

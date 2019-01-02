@@ -12,7 +12,7 @@
             </el-form-item>
             <el-form-item label="所属组织架构" prop="structure_id">
                 <el-select v-model="form.structureId" placeholder="请选择组织架构" class="w-200">
-                    <el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
+                    <el-option v-for="item in orgsOptions" :label="item.name" :value="item.id"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="备注">
@@ -36,9 +36,7 @@
     }
 </style>
 <script>
-  import http from '../../../../assets/js/http'
   import fomrMixin from '../../../../assets/js/form_com'
-
   export default {
     data() {
       return {
@@ -97,8 +95,8 @@
               this.form.password = this.password
             }
             this.form.id = this.id;
-            this.apiPost('admin/users/update/', this.form).then(res => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/users/update/', this.form).then(res => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('添加成功');
                 this.$global.clearVuex('setUsers');
                 setTimeout(() => {
@@ -117,8 +115,8 @@
           if (data && data.length) {
             resolve(data)
           } else {
-            this.apiGet('admin/groups').then((res) => {
-              this.handelResponse(res, (data) => {
+            this.$http.apiGet('admin/groups').then((res) => {
+              this.$http.handelResponse(res, (data) => {
                 resolve(data)
               })
             })
@@ -126,15 +124,15 @@
         })
       },
       getAllOrgs() {
-        this.apiGet('admin/structures').then(res => {
-          this.handelResponse(res, data => this.orgsOptions = data)
+        this.$http.apiPost('admin/structures').then(res => {
+          this.$http.handelResponse(res, data => this.orgsOptions = data.list)
         })
       },
       async getCompleteData() {
         this.getAllOrgs();
         this.groupOptions = await this.getAllGroups();
-        this.apiGet('admin/users/edit/' + this.id).then(res => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/users/edit/' + this.id).then(res => {
+          this.$http.handelResponse(res, (data) => {
             this.form.username = data.username;
             this.form.realname = data.realname;
             this.form.structureId = data.structureId;
@@ -156,6 +154,6 @@
       this.id = this.$route.params.id;
       this.getCompleteData()
     },
-    mixins: [http, fomrMixin]
+    mixins: [fomrMixin]
   }
 </script>

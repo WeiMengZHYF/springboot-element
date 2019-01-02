@@ -42,8 +42,8 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/structures/save', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/structures/save', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('添加成功');
                 this.$router.history.go(-1);
               }, () => {
@@ -54,8 +54,8 @@
         })
       },
       getStructures() {
-        this.apiGet('admin/structures').then((res) => {
-          this.handelResponse(res, data => this.options = this.options.concat(data))
+        this.$http.apiPost('admin/structures').then((res) => {
+          this.$http.handelResponse(res, data => this.options = this.options.concat(data.list))
         })
       }
     },

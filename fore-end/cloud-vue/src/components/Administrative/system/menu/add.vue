@@ -89,8 +89,8 @@
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/menus/save', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/menus/save', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$global.clearVuex('setRules');
                 this.$message.success('添加成功');
                 setTimeout(() => {
@@ -108,10 +108,10 @@
       }
     },
     created() {
-      this.apiPost('admin/menus').then(res => {
-        this.handelResponse(res, (data) => {
+      this.$http.apiPost('admin/menus').then(res => {
+        this.$http.handelResponse(res, (data) => {
           let array = [];
-          data.forEach(ret => {
+          data.list.forEach(ret => {
             if (ret.level !== 3 && ret.menuType === 1) {
               array.push(ret)
             }

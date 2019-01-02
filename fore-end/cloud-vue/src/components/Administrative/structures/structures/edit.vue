@@ -42,8 +42,8 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/structures/update', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/structures/update', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('编辑成功');
                 this.$router.history.go(-1);
               }, () => {
@@ -54,19 +54,19 @@
         })
       },
       getStructures() {
-        this.apiGet('admin/structures').then((res) => {
-          this.handelResponse(res, (data) => {
-            _(data).forEach((ret) => {
+        this.$http.apiPost('admin/structures').then((res) => {
+          this.$http.handelResponse(res, (data) => {
+            _(data.list).forEach((ret) => {
               ret.id = ret.id.toString()
             });
-            this.options = this.options.concat(data)
+            this.options = this.options.concat(data.list)
           })
         })
       },
       getStructureInfo() {
         this.form.id = this.$route.params.id;
-        this.apiGet('admin/structures/edit/' + this.form.id).then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/structures/edit/' + this.form.id).then((res) => {
+          this.$http.handelResponse(res, (data) => {
             data.pid = data.pid.toString();
             this.form.id = data.id;
             this.form.name = data.name;

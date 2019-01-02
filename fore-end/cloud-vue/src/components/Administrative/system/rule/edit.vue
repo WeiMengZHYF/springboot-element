@@ -28,7 +28,6 @@
 </template>
 
 <script>
-  import http from '../../../../assets/js/http'
   import fomrMixin from '../../../../assets/js/form_com'
 
   export default {
@@ -64,7 +63,7 @@
         this.$refs[form].validate((valid) => {
           if (valid) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/rules/update/', this.form).then((res) => {
+            this.$http.apiPost('admin/rules/update/', this.form).then((res) => {
               this.handelResponse(res, () => {
                 this.$message.success('编辑成功');
                 setTimeout(() => {
@@ -78,16 +77,16 @@
         })
       },
       getRules() {
-        this.apiGet('admin/rules').then((res) => {
-          this.handelResponse(res, (data) => {
-            this.options = this.options.concat(data)
+        this.$http.apiPost('admin/rules').then((res) => {
+          this.$http.handelResponse(res, (data) => {
+            this.options = this.options.concat(data.list)
           })
         })
       },
       getRuleInfo() {
         this.form.id = this.$route.params.id;
-        this.apiGet('admin/rules/edit/' + this.form.id).then(res => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/rules/edit/' + this.form.id).then(res => {
+          this.$http.handelResponse(res, (data) => {
             data.level = data.level.toString();
             this.form = data
           })
@@ -98,6 +97,6 @@
       this.getRules();
       this.getRuleInfo()
     },
-    mixins: [http, fomrMixin]
+    mixins: [fomrMixin]
   }
 </script>

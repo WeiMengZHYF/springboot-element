@@ -17,8 +17,6 @@
 </template>
 
 <script>
-  import http from '../../assets/js/http'
-
   export default {
     data() {
       return {
@@ -51,8 +49,8 @@
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.disable = !this.disable;
-            this.apiPost('admin/setInfo', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/setInfo', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success( '修改成功');
                 this.$storage.rm('authKey');
                 this.$storage.rm('authList');
@@ -70,7 +68,6 @@
     },
     created() {
       this.form.auth_key = this.$storage.get('authKey')
-    },
-    mixins: [http]
+    }
   }
 </script>

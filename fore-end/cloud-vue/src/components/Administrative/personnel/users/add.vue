@@ -11,7 +11,7 @@
         </el-form-item>
         <el-form-item label="部门" prop="structure_id">
             <el-select v-model="form.structure_id" placeholder="请选择部门">
-                <el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
+                <el-option v-for="item in orgsOptions" :label="item.name" :value="item.id"></el-option>
             </el-select>
         </el-form-item>
         <el-form-item label="备注">
@@ -34,9 +34,7 @@
     }
 </style>
 <script>
-  import http from '../../../../assets/js/http'
   import fomrMixin from '../../../../assets/js/form_com'
-
   export default {
     data() {
       return {
@@ -92,8 +90,8 @@
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.isLoading = !this.isLoading;
-            this.apiPost('admin/users/save', this.form).then((res) => {
-              this.handelResponse(res, () => {
+            this.$http.apiPost('admin/users/save', this.form).then((res) => {
+              this.$http.handelResponse(res, () => {
                 this.$message.success('添加成功');
                 this.$global.clearVuex('setUsers');
                 setTimeout(() => {
@@ -105,16 +103,16 @@
         })
       },
       getAllGroups() {
-        this.apiGet('admin/groups').then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiGet('admin/groups').then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.groupOptions = data
           })
         })
       },
       getAllOrgs() {
-        this.apiGet('admin/structures').then((res) => {
-          this.handelResponse(res, (data) => {
-            this.orgsOptions = data
+        this.$http.apiPost('admin/structures').then((res) => {
+          this.$http.handelResponse(res, (data) => {
+            this.orgsOptions = data.list
           })
         })
       }
@@ -123,6 +121,6 @@
       this.getAllGroups();
       this.getAllOrgs()
     },
-    mixins: [http, fomrMixin]
+    mixins: [fomrMixin]
   }
 </script>

@@ -69,9 +69,9 @@
           type: 'warning'
         }).then(() => {
           this.$global.openGlobalLoading();
-          this.apiDelete('admin/posts/delete/', item.id).then((res) => {
+          this.$http.apiDelete('admin/posts/delete/', item.id).then((res) => {
             this.$global.closeGlobalLoading();
-            this.handelResponse(res, () => {
+            this.$http.handelResponse(res, () => {
               this.$message.success('删除成功');
               this.$router.history.go(-1);
             })
@@ -80,8 +80,8 @@
         })
       },
       getPositions() {
-        this.apiPost('admin/posts', { rows: this.pageSize, page: this.currentPage }).then((res) => {
-          this.handelResponse(res, (data) => {
+        this.$http.apiPost('admin/posts', { rows: this.pageSize, page: this.currentPage }).then((res) => {
+          this.$http.handelResponse(res, (data) => {
             this.tableData = data.list;
             this.total = data.total;
           })

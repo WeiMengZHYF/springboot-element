@@ -13,6 +13,7 @@ import VueRouter from 'vue-router'
 import store from './vuex/store'
 import filter from './assets/js/filter'
 import global from './assets/js/global'
+import http from './assets/js/http'
 import 'nprogress/nprogress.css'
 import 'assets/css/global.css'
 import 'assets/css/base.css'
@@ -90,6 +91,7 @@ window.pageSize = 15;
 Vue.prototype.$cookies = Cookies;
 Vue.prototype.$global = global;
 Vue.prototype.$storage = storage;
+Vue.prototype.$http=http
 const bus = new Vue();
 window.bus = bus;
 
