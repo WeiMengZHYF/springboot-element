@@ -19,6 +19,9 @@ public class SysAdminMenu  extends BaseEntity {
     @Column(name = "`pid`")
     private Integer pid;
 
+    @Transient
+    private String parent;
+
     /**
      * 菜单名称
      */
@@ -118,6 +121,14 @@ public class SysAdminMenu  extends BaseEntity {
      */
     public void setPid(Integer pid) {
         this.pid = pid;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
     }
 
     /**

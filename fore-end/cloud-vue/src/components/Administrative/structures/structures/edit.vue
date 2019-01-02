@@ -6,7 +6,7 @@
             </el-form-item>
             <el-form-item label="父级部门" prop="pid">
                 <el-select v-model="form.pid" placeholder="父级部门">
-                    <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
+                    <el-option v-for="item in options" :label="item.name" :value="item.id"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item>
@@ -29,7 +29,7 @@
           name: '',
           pid: null
         },
-        options: [{ id: '0', title: '无' }],
+        options: [{ id: '0', name: '无' }],
         rules: {
           name: [
             { required: true, message: '请输入部门名称', trigger: 'blur' }

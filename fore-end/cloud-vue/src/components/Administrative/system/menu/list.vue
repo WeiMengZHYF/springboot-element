@@ -6,13 +6,12 @@
             </router-link>
         </el-row>
         <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
-            <el-table-column type="selection" :context="_self"></el-table-column>
-            <el-table-column align="center" prop="p_title" label="上级菜单"></el-table-column>
             <el-table-column align="center" prop="title" label="标题"></el-table-column>
+            <el-table-column align="center" prop="parent" label="上级菜单"></el-table-column>
             <el-table-column align="center" prop="sort" label="排序"></el-table-column>
             <el-table-column align="center" label="状态">
                 <template slot-scope="scope" align="center">
-                     {{ scope.row.status | status}}
+                    {{ scope.row.status | status}}
                 </template>
             </el-table-column>
             <el-table-column align="center" label="操作">
@@ -26,6 +25,14 @@
                 </template>
             </el-table-column>
         </el-table>
+        <el-row class="pos-rel p-t-20">
+            <el-row class="block pages">
+                <el-pagination @current-change="handleCurrentChange" layout="total, sizes, prev, pager, next, jumper"
+                               :page-sizes="[10, 20, 30]" :page-size="10" @size-change="handleSizeChange"
+                               :current-page="currentPage" :total="total">
+                </el-pagination>
+            </el-row>
+        </el-row>
     </el-row>
 </template>
 
@@ -36,12 +43,23 @@
     data() {
       return {
         tableData: [],
-        multipleSelection: []
+        multipleSelection: [],
+        total: 0,
+        currentPage: 1,
+        pageSize: 10
       }
     },
     methods: {
       selectItem(val) {
         this.multipleSelection = val
+      },
+      handleCurrentChange(page) {
+        this.currentPage = page;
+        this.list();
+      },
+      handleSizeChange(pageSize) {
+        this.pageSize = pageSize;
+        this.list();
       },
       confirmDelete(item) {
         this.$confirm('确认删除该菜单?', '提示', {
@@ -53,21 +71,26 @@
           this.apiDelete('admin/menus/delete/', item.id).then((res) => {
             this.$global.closeGlobalLoading();
             this.handelResponse(res, () => {
-              this.$message.success( '删除成功');
+              this.$message.success('删除成功');
               this.$router.history.go(-1);
             })
           })
         }).catch(() => {
           this.$message.error('删除失败');
         })
+      },
+      list() {
+        this.apiPost('admin/menus', { rows: this.pageSize, page: this.currentPage }).then((res) => {
+          this.handelResponse(res, (data) => {
+            this.tableData = data.list;
+            this.total = data.total;
+          })
+        })
       }
     },
+
     created() {
-      this.apiPost('admin/menus').then((res) => {
-        this.handelResponse(res, (data) => {
-          this.tableData = data
-        })
-      })
+      this.list();
     },
     computed: {},
     components: {},

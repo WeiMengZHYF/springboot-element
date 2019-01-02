@@ -17,13 +17,13 @@ import cloud.simple.service.model.SysAdminRule;
 public class TreeUtil {
 	/**
      * 将数据集转换成Tree（真正的Tree结构）
-     * @param array $list 要转换的数据集
-     * @param string $root 返回的根节点ID
+     * @param list $list 要转换的数据集
+     * @param rootId $root 返回的根节点ID
      * @return List<TreeNode>
      */
 	public static List<TreeNode> listMenuToTree(List<SysAdminMenu> list,Integer rootId) {
 		//创建tree
-		List<TreeNode> tree = new ArrayList<TreeNode>();  
+		List<TreeNode> tree = new ArrayList<>();
 		if (CollectionUtils.isNotEmpty(list)) {
 			for (SysAdminMenu menu : list) {
 				Integer pid = menu.getPid();
@@ -35,7 +35,6 @@ public class TreeUtil {
 					treeNode.put("status", menu.getStatus());
 					treeNode.put("rule_id", menu.getRuleId());
 					treeNode.put("module", menu.getModule());
-					treeNode.put("module", menu.getModule());
 					treeNode.put("menu", menu.getMenu());
 					tree.add(treeNode);
 				} else {
@@ -45,7 +44,6 @@ public class TreeUtil {
 					treeNode.put("sort", menu.getSort());
 					treeNode.put("status", menu.getStatus());
 					treeNode.put("rule_id", menu.getRuleId());
-					treeNode.put("module", menu.getModule());
 					treeNode.put("module", menu.getModule());
 					treeNode.put("menu", menu.getMenu());
 					tree.add(treeNode);
@@ -57,13 +55,13 @@ public class TreeUtil {
 	
 	/**
      * 将数据集转换成Tree（真正的Tree结构）
-     * @param array $list 要转换的数据集
-     * @param string $root 返回的根节点ID
+     * @param list $list 要转换的数据集
+     * @param rootId $root 返回的根节点ID
      * @return List<TreeNode>
      */
 	public static List<TreeNode> listRuleToTree(List<SysAdminRule> list,Integer rootId) {
 		//创建tree
-		List<TreeNode> tree = new ArrayList<TreeNode>();  
+		List<TreeNode> tree = new ArrayList<>();
 		if (CollectionUtils.isNotEmpty(list)) {
 			for (SysAdminRule rule : list) {
 				Integer pid = rule.getPid();

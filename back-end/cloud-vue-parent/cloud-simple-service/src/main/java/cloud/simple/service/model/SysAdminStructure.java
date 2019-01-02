@@ -2,19 +2,23 @@ package cloud.simple.service.model;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import cloud.simple.service.base.BaseEntity;
 
 @Table(name = "`sys_admin_structure`")
-public class SysAdminStructure  extends BaseEntity {
+public class SysAdminStructure extends BaseEntity {
 
-	private static final long serialVersionUID = 8560760088975512813L;
+    private static final long serialVersionUID = 8560760088975512813L;
 
     @Column(name = "`name`")
     private String name;
 
     @Column(name = "`pid`")
     private Integer pid;
+
+    @Transient
+    private String parent;
 
     @Column(name = "`status`")
     private Byte status;
@@ -48,6 +52,14 @@ public class SysAdminStructure  extends BaseEntity {
         this.pid = pid;
     }
 
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
     /**
      * @return status
      */
@@ -61,4 +73,6 @@ public class SysAdminStructure  extends BaseEntity {
     public void setStatus(Byte status) {
         this.status = status;
     }
+
+
 }

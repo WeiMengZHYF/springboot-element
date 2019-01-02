@@ -5,19 +5,18 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import cloud.simple.service.util.RestResult;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import cloud.simple.service.contants.Constant;
 import cloud.simple.service.domain.SysAdminUserService;
 import cloud.simple.service.model.SysAdminUser;
 import cloud.simple.service.util.EncryptUtil;
-import cloud.simple.service.util.FastJsonUtils;
 
 @Component
 public class LoginInterceptor extends HandlerInterceptorAdapter {
@@ -39,9 +38,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if (StringUtils.isEmpty(authKey) || StringUtils.isEmpty(sessionId)) {
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter writer = response.getWriter();
-            String msg = FastJsonUtils.resultError(-100, "authKey或sessionId不能为空！", null);
-            logger.info(msg);
-            writer.write(msg);
+            RestResult<String> restResult = new RestResult<>();
+            restResult.setCode(-100);
+            restResult.setMsg("authKey或sessionId不能为空！");
+            writer.write(JSONObject.toJSONString(restResult));
             writer.flush();
             return false;
         }
@@ -61,10 +61,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             session.setAttribute(Constant.LOGIN_ADMIN_USER, sessionAdminUser);
         }
 
-        if (sessionAdminUser == null || sessionAdminUser.getStatus() == (0)) {
+        if (sessionAdminUser == null || sessionAdminUser.getStatus() == 0) {
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter writer = response.getWriter();
-            writer.write(FastJsonUtils.resultError(-101, "账号已被删除或禁用", null));
+            RestResult<String> restResult = new RestResult<>();
+            restResult.setCode(-101);
+            restResult.setMsg("账号已被删除或禁用");
+            writer.write(JSONObject.toJSONString(restResult));
             writer.flush();
             return false;
         }

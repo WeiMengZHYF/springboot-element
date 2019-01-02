@@ -1,7 +1,7 @@
 package cloud.simple.service.domain;
 
-import java.util.List;
-
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,16 @@ public class SysAdminPostService extends BaseServiceImpl<SysAdminPost>{
 	@Autowired
 	private Mapper<SysAdminPost> sysAdminPostDao;
 	
-	public List<SysAdminPost> getDataList(String name) {
+	public PageInfo<SysAdminPost> getDataList(SysAdminPost post) {
+
+		PageHelper.startPage(post.getPage(),post.getRows());
 		Example example = new Example(SysAdminPost.class,false);
 		Criteria criteria = example.createCriteria();
-		if(StringUtils.isNotBlank(name)){
-			criteria.andLike("name", name);
+		if(StringUtils.isNotBlank(post.getName())){
+			criteria.andLike("name", post.getName());
 		}
-		return sysAdminPostDao.selectByExample(example);
+		example.orderBy("id").desc();
+		return new PageInfo<>(sysAdminPostDao.selectByExample(example));
 	}
 
 }

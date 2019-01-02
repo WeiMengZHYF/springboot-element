@@ -1,18 +1,13 @@
 package cloud.simple.service.web;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cloud.simple.service.util.RestResult;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import cloud.simple.service.util.FastJsonUtils;
 import cloud.simple.service.util.UploadUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,12 +29,12 @@ public class UploadController extends CommonController {
 	// 上传文件(支持批量)
 	@PostMapping("/image")
 	@ApiOperation(value = "上传图片", httpMethod="POST")
-	public RestResult<String> uploadImage(MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+	public RestResult<String> uploadImage(MultipartFile file, HttpServletResponse response) {
 
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("text/html;charset=utf-8");
 		 //上传文件
-        String path = UploadUtils.saveMartipartFile(multipartLocation, request,file,"users","yyyyMM");
+        String path = UploadUtils.saveMartipartFile(multipartLocation,file,"users","yyyyMM");
         return RestResult.success(path);
 	}
 }

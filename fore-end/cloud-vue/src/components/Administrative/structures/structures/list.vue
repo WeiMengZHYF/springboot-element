@@ -7,9 +7,8 @@
         </el-row>
         <el-table :data="tableData" style="width: 100%" @selection-change="selectItem" :highlight-current-row="true"
                   border :fit="true">
-            <el-table-column type="selection"></el-table-column>
-            <el-table-column label="部门结构" prop="title" align="center"></el-table-column>
             <el-table-column label="部门名称" prop="name" align="center"></el-table-column>
+            <el-table-column label="上级部门" prop="parent" align="center"></el-table-column>
             <el-table-column label="状态" prop="status" align="center">
                 <template slot-scope="scope" align="center">
                     {{ scope.row.status | status }}
@@ -27,6 +26,14 @@
                 </template>
             </el-table-column>
         </el-table>
+        <el-row class="pos-rel p-t-20">
+            <el-row class="block pages">
+                <el-pagination @current-change="handleCurrentChange" layout="total, sizes, prev, pager, next, jumper"
+                               :page-sizes="[10, 20, 30]" :page-size="10" @size-change="handleSizeChange"
+                               :current-page="currentPage" :total="total">
+                </el-pagination>
+            </el-row>
+        </el-row>
     </el-row>
 </template>
 
@@ -37,12 +44,23 @@
     data() {
       return {
         tableData: [],
+        total: 0,
+        currentPage: 1,
+        pageSize: 10,
         multipleSelection: []
       }
     },
     methods: {
       selectItem(val) {
         this.multipleSelection = val
+      },
+      handleCurrentChange(page) {
+        this.currentPage = page;
+        this.getStructures();
+      },
+      handleSizeChange(pageSize) {
+        this.pageSize = pageSize;
+        this.getStructures();
       },
       confirmDelete(item) {
         this.$confirm('确认删除该部门?', '提示', {
@@ -63,9 +81,10 @@
         })
       },
       getStructures() {
-        this.apiGet('admin/structures').then((res) => {
+        this.apiPost('admin/structures', { rows: this.pageSize, page: this.currentPage }).then((res) => {
           this.handelResponse(res, (data) => {
-            this.tableData = data
+            this.tableData = data.list;
+            this.total = data.total;
           })
         })
       }

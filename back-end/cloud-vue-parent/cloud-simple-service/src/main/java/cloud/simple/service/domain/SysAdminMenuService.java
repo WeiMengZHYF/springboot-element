@@ -3,7 +3,10 @@ package cloud.simple.service.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import com.github.pagehelper.PageInfo;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -115,20 +118,17 @@ public class SysAdminMenuService extends BaseServiceImpl<SysAdminMenu> {
     /**
      * 查询对应用户Id的菜单
      *
-     * @param userId
      * @return
      */
-    public List<Map<String, Object>> getDataList(Integer userId, Byte status) {
+    public PageInfo<SysAdminMenu> getDataList(SysAdminMenu record) {
 
-        List<SysAdminMenu> rootSysAdminMenus = this.getMenusByUserId(userId, status);
-        Map<String, String> fields = Maps.newHashMap();
-        fields.put("cid", "id");
-        fields.put("fid", "pid");
-        fields.put("name", "title");
-        fields.put("fullname", "title");
-        List<Map<String, Object>> rawList = Lists.newArrayList();
-        rootSysAdminMenus.forEach(m -> rawList.add(BeanToMapUtil.convertBean(m)));
-        Category cate = new Category(fields, rawList);
-        return cate.getList(Integer.valueOf("0"));
+        PageInfo<SysAdminMenu> pageInfo = this.selectPage(record.getPage(), record.getRows(), record);
+        if(CollectionUtils.isNotEmpty(pageInfo.getList())){
+            pageInfo.getList().forEach(entity->{
+                String parent = Optional.ofNullable(entity.getPid()).map(this::selectByPrimaryKey).map(SysAdminMenu::getTitle).orElse(null);
+                entity.setParent(parent);
+            });
+        }
+        return pageInfo;
     }
 }

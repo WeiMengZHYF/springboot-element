@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import cloud.simple.service.util.RestResult;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,11 +35,11 @@ public class SysAdminPostsController extends CommonController {
     /**
      * 列表
      */
-    @ApiOperation(value = "列表", httpMethod = "GET")
-    @RequestMapping(value = "")
-    public RestResult<List<SysAdminPost>> index(String name) {
+    @ApiOperation(value = "列表", httpMethod = "POST")
+    @PostMapping(value = "")
+    public RestResult<PageInfo<SysAdminPost>> index(@RequestBody SysAdminPost post) {
 
-        return RestResult.success(sysAdminPostService.getDataList(name));
+        return RestResult.success(sysAdminPostService.getDataList(post));
     }
 
     /**

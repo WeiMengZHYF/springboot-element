@@ -7,7 +7,6 @@
         </el-row>
         <el-table :data="tableData" style="width: 100%" @selection-change="selectItem" :highlight-current-row="true"
                   border :fit="true">
-            <el-table-column type="selection"></el-table-column>
             <el-table-column label="岗位名称" align="center" prop="name"></el-table-column>
             <el-table-column label="状态" align="center" prop="status">
                 <template slot-scope="scope">
@@ -27,21 +26,39 @@
                 </template>
             </el-table-column>
         </el-table>
+        <el-row class="pos-rel p-t-20">
+            <el-row class="block pages">
+                <el-pagination @current-change="handleCurrentChange" layout="total, sizes, prev, pager, next, jumper"
+                               :page-sizes="[10, 20, 30]" :page-size="10" @size-change="handleSizeChange"
+                               :current-page="currentPage" :total="total">
+                </el-pagination>
+            </el-row>
+        </el-row>
     </el-row>
 </template>
 
 <script>
-  import btnGroup from '../../../Common/btn-group.vue'
   import http from '../../../../assets/js/http'
 
   export default {
     data() {
       return {
         tableData: [],
-        multipleSelection: []
+        multipleSelection: [],
+        total: 0,
+        currentPage: 1,
+        pageSize: 10
       }
     },
     methods: {
+      handleCurrentChange(page) {
+        this.currentPage = page;
+        this.getPositions();
+      },
+      handleSizeChange(pageSize) {
+        this.pageSize = pageSize;
+        this.getPositions();
+      },
       selectItem(val) {
         this.multipleSelection = val
       },
@@ -63,9 +80,10 @@
         })
       },
       getPositions() {
-        this.apiGet('admin/posts').then((res) => {
+        this.apiPost('admin/posts', { rows: this.pageSize, page: this.currentPage }).then((res) => {
           this.handelResponse(res, (data) => {
-            this.tableData = data
+            this.tableData = data.list;
+            this.total = data.total;
           })
         })
       }

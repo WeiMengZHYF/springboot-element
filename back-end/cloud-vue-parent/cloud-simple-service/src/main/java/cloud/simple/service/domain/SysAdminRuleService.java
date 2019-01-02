@@ -2,6 +2,7 @@ package cloud.simple.service.domain;
 
 import java.util.*;
 
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -106,34 +107,18 @@ public class SysAdminRuleService extends BaseServiceImpl<SysAdminRule> {
     /**
      * 列表页面
      *
-     * @param userId 用户id
-     * @param type   类型 tree,其它
      * @return
      */
-    public List<Map<String, Object>> getDataList(Integer userId, String type) {
-        List<SysAdminRule> rulesList = getRulesByUserId(userId);
-        if (type != null && "tree".equals(type)) {
-            //处理树
-            rulesList = this.buildByRecursiveTree(rulesList);
-            List<Map<String, Object>> rawList = Lists.newArrayList();
-            rulesList.forEach((m) -> {
-                Map<String, Object> map = BeanToMapUtil.convertBean(m);
-                map.put("check", false);
-                rawList.add(map);
-            });
-            return rawList;
-        } else {
-            Map<String, String> fields = Maps.newHashMap();
-            fields.put("cid", "id");
-            fields.put("fid", "pid");
-            fields.put("name", "title");
-            fields.put("fullname", "title");
-            List<Map<String, Object>> rawList = Lists.newArrayList();
-            rulesList.forEach(m -> rawList.add(BeanToMapUtil.convertBean(m)));
-            Category cate = new Category(fields, rawList);
-            return cate.getList(Integer.valueOf("0"));
-        }
+    public PageInfo<SysAdminRule> getDataList(SysAdminRule sysAdminRule) {
 
+        PageInfo<SysAdminRule> pageInfo = this.selectPage(sysAdminRule.getPage(), sysAdminRule.getRows(), sysAdminRule);
+        if(CollectionUtils.isNotEmpty(pageInfo.getList())){
+            pageInfo.getList().forEach(entity ->{
+                String parent = Optional.ofNullable(entity.getPid()).map(this::selectByPrimaryKey).map(SysAdminRule::getTitle).orElse(null);
+                entity.setParent(parent);
+            });
+        }
+        return pageInfo;
     }
 
 

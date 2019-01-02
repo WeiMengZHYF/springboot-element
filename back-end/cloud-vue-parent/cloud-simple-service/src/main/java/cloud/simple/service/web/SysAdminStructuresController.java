@@ -4,15 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import cloud.simple.service.util.RestResult;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import cloud.simple.service.domain.SysAdminStructureService;
 import cloud.simple.service.model.SysAdminStructure;
 import io.swagger.annotations.Api;
@@ -35,10 +30,10 @@ public class SysAdminStructuresController extends CommonController {
      * 列表
      */
     @ApiOperation(value = "列表", httpMethod = "GET")
-    @RequestMapping(value = "")
-    public RestResult<List<Map<String, Object>>> index() {
+    @RequestMapping
+    public RestResult<PageInfo<SysAdminStructure>> index(@RequestBody SysAdminStructure sysAdminStructure) {
 
-        return RestResult.success(sysAdminStructureService.getDataList());
+        return RestResult.success(sysAdminStructureService.getDataList(sysAdminStructure));
     }
 
     /**

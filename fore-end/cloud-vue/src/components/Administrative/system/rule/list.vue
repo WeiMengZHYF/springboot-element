@@ -6,9 +6,8 @@
             </router-link>
         </el-row>
         <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
-            <el-table-column type="selection" :context="_self"></el-table-column>
-            <el-table-column align="center" prop="p_title" label="节点结构"></el-table-column>
             <el-table-column align="center" prop="title" label="显示名"></el-table-column>
+            <el-table-column align="center" prop="parent" label="父节点"></el-table-column>
             <el-table-column align="center" prop="name" label="名称"></el-table-column>
             <el-table-column align="center" label="状态">
                 <template slot-scope="scope">
@@ -18,12 +17,21 @@
             <el-table-column :align="center" label="操作">
                 <template slot-scope="scope">
                     <span>
-                        <router-link class="el-button el-button--primary el-button--small" :to="{ name: 'ruleEdit', params: { id: scope.row.id }}">编辑</router-link>
+                        <router-link class="el-button el-button--primary el-button--small"
+                                     :to="{ name: 'ruleEdit', params: { id: scope.row.id }}">编辑</router-link>
                     </span>
                     <el-button type="danger" @click="confirmDelete(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
+        <el-row class="pos-rel p-t-20">
+            <el-row class="block pages">
+                <el-pagination @current-change="handleCurrentChange" layout="total, sizes, prev, pager, next, jumper"
+                               :page-sizes="[10, 20, 30]" :page-size="10" @size-change="handleSizeChange"
+                               :current-page="currentPage" :total="total">
+                </el-pagination>
+            </el-row>
+        </el-row>
     </el-row>
 </template>
 
@@ -34,12 +42,23 @@
     data() {
       return {
         tableData: [],
-        multipleSelection: []
+        multipleSelection: [],
+        total: 0,
+        currentPage: 1,
+        pageSize: 10
       }
     },
     methods: {
       selectItem(val) {
         this.multipleSelection = val
+      },
+      handleCurrentChange(page) {
+        this.currentPage = page;
+        this.list();
+      },
+      handleSizeChange(pageSize) {
+        this.pageSize = pageSize;
+        this.list();
       },
       confirmDelete(item) {
         this.$confirm('确认删除该权限?', '提示', {
@@ -58,14 +77,18 @@
         }).catch(() => {
           this.$message.error("操作失败");
         })
+      },
+      list() {
+        this.apiPost('admin/rules', { rows: this.pageSize, page: this.currentPage }).then((res) => {
+          this.handelResponse(res, (data) => {
+            this.tableData = data.list;
+            this.total = data.total;
+          })
+        })
       }
     },
     created() {
-      this.apiGet('admin/rules').then((res) => {
-        this.handelResponse(res, (data) => {
-          this.tableData = data
-        })
-      })
+      this.list();
     },
     computed: {},
     components: {},

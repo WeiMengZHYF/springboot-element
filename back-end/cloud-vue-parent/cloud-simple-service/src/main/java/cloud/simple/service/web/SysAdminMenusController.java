@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import cloud.simple.service.util.RestResult;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,13 +36,12 @@ public class SysAdminMenusController extends CommonController {
     /**
      * 列表
      */
-    @ApiOperation(value = "列表", httpMethod = "GET")
+    @ApiOperation(value = "列表", httpMethod = "POST")
     @RequestMapping(value = "")
     @ResponseBody
-    public RestResult<List<Map<String, Object>>> index(@RequestBody SysAdminMenu record) {
+    public RestResult<PageInfo<SysAdminMenu>> index(@RequestBody SysAdminMenu record) {
 
-        List<Map<String, Object>> menus = sysAdminMenuService.getDataList(this.getCurrentUser().getId(), record == null ? null : record.getStatus());
-        return RestResult.success(menus);
+        return RestResult.success(sysAdminMenuService.getDataList(record));
     }
 
     /**
