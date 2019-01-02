@@ -1,7 +1,6 @@
 package cloud.simple.service.web;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import cloud.simple.service.util.RestResult;
 import com.github.pagehelper.PageInfo;
@@ -81,10 +80,10 @@ public class SysAdminMenusController extends CommonController {
      * 删除
      */
     @ApiOperation(value = "删除")
-    @DeleteMapping(value = "delete/{id}")
-    public RestResult<String> delete(@PathVariable Integer id) {
+    @DeleteMapping(value = "delete")
+    public RestResult<String> delete(@RequestBody SysAdminMenu record) {
 
-        sysAdminMenuService.deleteByPrimaryKey(id);
+        sysAdminMenuService.deleteByPrimaryKey(record.getId());
         return RestResult.success();
     }
 
