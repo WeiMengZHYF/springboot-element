@@ -13,7 +13,6 @@
             </router-link>
         </el-row>
         <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
-            <el-table-column type="selection" width="50"></el-table-column>
             <el-table-column align="center" prop="structureName" label="所属组织架构"></el-table-column>
             <el-table-column align="center" prop="username" label="用户名" ></el-table-column>
             <el-table-column align="center" prop="remark" label="备注" ></el-table-column>

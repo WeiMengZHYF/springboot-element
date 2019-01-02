@@ -6,7 +6,6 @@
             </router-link>
         </el-row>
         <el-table :data="tableData" @selection-change="selectItem" :highlight-current-row="true" border :fit="true">
-            <el-table-column type="selection"></el-table-column>
             <el-table-column align="center" label="组名" prop="title"></el-table-column>
             <el-table-column align="center" label="描述" prop="remark"></el-table-column>
             <el-table-column align="center" label="状态" prop="status">
@@ -31,7 +30,6 @@
 <script>
   import btnGroup from '../../../Common/btn-group.vue'
   import http from '../../../../assets/js/http'
-
   export default {
     data() {
       return {
