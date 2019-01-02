@@ -27,7 +27,7 @@ public class BaseEntity implements Serializable {
     private Integer page = 1;
 
     @Transient
-    private Integer rows = 10;
+    private Integer rows = Integer.MAX_VALUE;
 
 
 	/**
