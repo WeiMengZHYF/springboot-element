@@ -15,7 +15,6 @@ import cloud.simple.service.contants.Constant;
 import cloud.simple.service.dao.SysAdminUserDao;
 import cloud.simple.service.model.SysAdminUser;
 import cloud.simple.service.util.EncryptUtil;
-import cloud.simple.service.util.FastJsonUtils;
 
 import java.util.Optional;
 
